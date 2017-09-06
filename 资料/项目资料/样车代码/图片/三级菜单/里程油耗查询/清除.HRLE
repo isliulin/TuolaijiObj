@@ -1,0 +1,16 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER 清除_H[] = { 
+    { 0x88, 0x00, 0x006C, 0x0028, 0x000010E0, 0x01, 0xFF },     // 清除 
+    { 0x88, 0x00, 0x006C, 0x0028, 0x000010E0, 0x01, 0xFF },     // 清除-白色 
+}; 

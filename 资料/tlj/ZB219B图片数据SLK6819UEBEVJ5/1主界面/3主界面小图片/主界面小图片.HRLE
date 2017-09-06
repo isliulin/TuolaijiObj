@@ -1,0 +1,18 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER 主界面小图片_H[] = { 
+    { 0x88, 0x00, 0x003A, 0x0038, 0x00000CB0, 0x01, 0xFF },     // D档 
+    { 0x88, 0x00, 0x003A, 0x0039, 0x00000CEA, 0x01, 0xFF },     // N档 
+    { 0x88, 0x00, 0x003A, 0x0038, 0x00000CB0, 0x01, 0xFF },     // R档 
+    { 0x88, 0x00, 0x0033, 0x0033, 0x00000A29, 0x01, 0xFF },     // 黑的 
+}; 

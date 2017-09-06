@@ -1,0 +1,14 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset诊断内容层 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 诊断内容层[] = { 
+    { offset诊断内容层+0x000000, 0x010C25 },    // 仪表模块-1 
+    { offset诊断内容层+0x010C25, 0x00EED9 },    // 仪表模块-2 
+    { offset诊断内容层+0x01FAFE, 0x006281 },    // 仪表模块-3 
+}; 

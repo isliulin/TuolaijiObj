@@ -335,8 +335,6 @@ void Widget::writeLog(QString value)
 
 void Widget::on_pushButtonStart_clicked()
 {
-
-
     return;
     if(SimpleThread == NULL)
     {
@@ -344,8 +342,8 @@ void Widget::on_pushButtonStart_clicked()
         connect( SimpleThread, SIGNAL(SendTotalProgress (int)) , this, SLOT(SlotTotalProgress(int)));
         connect( SimpleThread, SIGNAL(SendSingleProgress(int)) , this, SLOT(SlotSingleProgress(int)));
         connect( SimpleThread, SIGNAL(SendLog(QString)) ,        this, SLOT( writeLog(QString)));
-
     }
+
     if(!SimpleThread->isRunning())
     {
         qDebug()<<"启动线程!";

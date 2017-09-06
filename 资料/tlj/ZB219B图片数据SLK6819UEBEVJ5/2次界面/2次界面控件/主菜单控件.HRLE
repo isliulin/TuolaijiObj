@@ -1,0 +1,20 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER 主菜单控件_H[] = { 
+    { 0x88, 0x00, 0x00A6, 0x00A3, 0x000069B2, 0x01, 0xFF },     // 故障查询控件- 
+    { 0x88, 0x00, 0x00A6, 0x00A3, 0x000069B2, 0x01, 0xFF },     // 系统诊断控件- 
+    { 0x88, 0x00, 0x00A6, 0x00A3, 0x000069B2, 0x01, 0xFF },     // 参数设置控件- 
+    { 0x88, 0x00, 0x00A6, 0x00A3, 0x000069B2, 0x01, 0xFF },     // 图像设置控件- 
+    { 0x88, 0x00, 0x00A6, 0x00A3, 0x000069B2, 0x01, 0xFF },     // 能耗查询控件- 
+    { 0x88, 0x00, 0x00A6, 0x00A3, 0x000069B2, 0x01, 0xFF },     // 帮助信息控件- 
+}; 

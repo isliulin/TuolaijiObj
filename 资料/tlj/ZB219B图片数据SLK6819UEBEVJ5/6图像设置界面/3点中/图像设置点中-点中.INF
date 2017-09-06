@@ -1,0 +1,21 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset图像设置点中-点中 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 图像设置点中-点中[] = { 
+    { offset图像设置点中-点中+0x000000, 0x007250 },    // 通道选择- 
+    { offset图像设置点中-点中+0x007250, 0x007250 },    // 参数设置- 
+    { offset图像设置点中-点中+0x00E4A0, 0x0035FC },    // 前门 
+    { offset图像设置点中-点中+0x011A9C, 0x0035FC },    // 中门 
+    { offset图像设置点中-点中+0x015098, 0x0035FC },    // 倒车 
+    { offset图像设置点中-点中+0x018694, 0x0035FC },    // 顶部 
+    { offset图像设置点中-点中+0x01BC90, 0x002E40 },    // 对比度-点中 
+    { offset图像设置点中-点中+0x01EAD0, 0x002E40 },    // 亮度-点中 
+    { offset图像设置点中-点中+0x021910, 0x002E40 },    // 色度-点中 
+    { offset图像设置点中-点中+0x024750, 0x002E40 },    // 清晰度-点中 
+}; 

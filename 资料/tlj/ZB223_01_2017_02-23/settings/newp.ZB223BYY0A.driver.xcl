@@ -1,0 +1,23 @@
+"--endian=little" 
+
+"--cpu=Cortex-M4" 
+
+"--fpu=VFPv4_SP" 
+
+"-p" 
+
+"D:\Program Files\IAR Systems\Embedded Workbench 7.3\arm\CONFIG\debugger\NXP\S32K144.ddf" 
+
+"--drv_verify_download" 
+
+"--semihosting" 
+
+"--device=S32K144" 
+
+"--pemicro_show_settings_dialog" 
+
+"--drv_communication_log=F:\配置软件相关\223项目\ZB223_0A_bg_20161121\ZB223_01\cspycomm.log" 
+
+
+
+

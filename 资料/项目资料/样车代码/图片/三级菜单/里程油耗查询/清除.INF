@@ -1,0 +1,13 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset清除 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 清除[] = { 
+    { offset清除+0x000000, 0x0014F0 },    // 清除 
+    { offset清除+0x0014F0, 0x0014F0 },    // 清除-白色 
+}; 

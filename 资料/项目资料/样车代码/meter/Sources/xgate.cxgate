@@ -1,0 +1,880 @@
+#include "StepDeal.h"
+#include "SensorDeal.h"
+#include "Common.h"
+#include "J1939.h"
+#include "KeyDeal.h"
+#include "xgate.h"
+#include <stdlib.h>
+////////////////////////////////////////////////////////
+#pragma	CODE_SEG XGATE_CODE
+
+/**********************step array parameter macros********************/
+const char SinTbl[24]=
+{
+ 	64, 52, 40, 32,  
+ 	22, 16, 0,  16, \
+    22, 32, 40, 52,  
+ 	64, 52, 40, 32,  
+ 	22, 16, 0,  16, \
+    22, 32, 40, 52,
+};
+const char CosTbl[24]=
+{
+	22,  16,  0,  16, 
+	22,  32,  40, 52, \
+    64,  52,  40, 32,  
+    22,  16,  0,  16, \
+    22,  32,  40, 52,
+    64,  52,  40, 32
+};
+/// interrupt handler for all others
+interrupt void ErrorHandler(int dataptr) 
+{
+  int chanNum= dataptr;
+  asm BRK;
+}    
+/****************************************************************************************
+                 
+*****************************************************************************************/
+static	unsigned char Xgate_check_pos(unsigned char channel,unsigned int position)
+{
+    unsigned char flag;
+    
+    if(position == MotorFinalStep[channel])
+       flag = STEPNOT;
+    else if(position > MotorMaxStep[channel])
+    {
+        if(MotorFinalStep[channel] == MotorMaxStep[channel])
+        {
+            flag = STEPNOT;
+        }
+        else
+        {
+            flag = STEPHIG;
+        }
+    }
+    else if(position < MotorMinStep[channel])
+    {
+        if(MotorFinalStep[channel] == MotorMinStep[channel])
+        {
+            flag = STEPNOT;
+        }
+        else
+        {
+            flag = STEPLOW;
+        }
+    }
+    else
+    {
+        flag = OK;
+    }   
+    return flag;
+}
+/****************************************************************************************
+              
+*****************************************************************************************/
+static void	Xgate_motor_move(unsigned char channel,unsigned int position)
+{   
+    unsigned int data=0;
+    unsigned char flag;
+		
+    flag = Xgate_check_pos(channel,position);
+    if(flag == OK||flag == STEPHIG||flag == STEPLOW)
+   	{
+ 			MotorFinalStep[channel] = position;
+
+			if(channel == Oilplant)
+				TIE |= 0x04;
+			if(channel == TACHOMETER)
+			 	TIE |= 0x08;  
+			if(channel == TEMP)
+				TIE |= 0x02;
+			if(channel == Carspeed)
+				TIE |= 0x10;
+			if(channel == PRES)
+				TIE |=0x01;
+			if(channel == PRES2)
+				TIE |=0x20;
+    }
+}
+/*************************************************************
+Arithmatics:CARSPEEDMAXSTEP=140*84
+*************************************************************/
+static void Xgate_CARSPEED(void) 
+{		
+	uint	ChangeTemp=0;
+	ChangeTemp =carspeed;
+	ChangeTemp = ChangeTemp*21;	    
+	Xgate_motor_move(Carspeed,ChangeTemp);             
+}
+//////////////////////////////////////////////////////////////////
+static void motor_update(uchar channel, uchar dir)
+{
+    unsigned char  *motor_channel;
+    int     ctemp=0,itemp=0,dtemp=0;
+
+    itemp=MotorFinalStep[channel]-MotorCurStep[channel];
+    
+    if (itemp!=0)
+    {
+        if (itemp<0)  MotorCurStep[channel]--;
+        else if (itemp>0)  MotorCurStep[channel]++;       
+        
+        motor_channel = (uchar*)(&MCDC0 + channel*2);
+
+        ctemp = MotorCurStep[channel];
+      	ctemp = ctemp%6;
+      	
+        if(dir == CLOCKWISE)
+        { 
+           if(ctemp==0)
+           {
+              MCCTL1_RECIRC = 0;
+              *motor_channel &= ~S0_DTC;        ///;Duty cycle channel 0 
+              *(motor_channel+1) = 32;			///when OSC from 16M to 8M, change the data from 64 to 32;10.02.22 change
+                    						 
+              *(motor_channel+2) &= ~S1_DTC;    ///;Duty cycle channel 1 
+              *(motor_channel+3) =0;
+           }
+           else if(ctemp==1)
+           {
+              MCCTL1_RECIRC = 0;
+              *motor_channel &= ~S0_DTC;     
+              *(motor_channel+1) = 32;
+                    
+              *(motor_channel+2) &= ~S1_DTC;   
+              *(motor_channel+3) = 32;
+           }
+           else if(ctemp==2)
+           {  
+              MCCTL1_RECIRC = 0;
+              *motor_channel &= ~S0_DTC;        
+              *(motor_channel+1) = 0;
+                    
+              *(motor_channel+2) &= ~S1_DTC;    
+              *(motor_channel+3) = 32;
+           }
+           else if(ctemp==3)   
+           {
+              MCCTL1_RECIRC = 1;
+              *motor_channel |= S0_DTC;       
+              *(motor_channel+1) = 32;						
+                    
+              MCCTL1_RECIRC = 1;
+              *(motor_channel+2) |= S1_DTC;     
+   			  *(motor_channel+3) = 0;
+           }    
+           else if(ctemp==4)
+           {  
+              MCCTL1_RECIRC = 1;
+              *motor_channel |= S0_DTC;        
+              *(motor_channel+1) = 32;				
+                    
+              *(motor_channel+2) |= S1_DTC;     
+              *(motor_channel+3) = 32;  
+           }
+           else if(ctemp==5)   
+           {
+               MCCTL1_RECIRC = 1;
+               *motor_channel |= S0_DTC;        
+               *(motor_channel+1) = 0;						
+                    
+               *(motor_channel+2) |= S1_DTC;     
+               *(motor_channel+3) = 32;
+           }  	 	               				 
+        }
+    }
+    else
+    {
+		if(channel == Oilplant)
+        	TIE &= ~0x04;
+		else if(channel == TACHOMETER)
+        	TIE &= ~0x08;
+        else if(channel == TEMP)
+        	TIE &= ~0x02;
+		else if(channel == Carspeed)
+			TIE &= ~0x10;
+		else if(channel == PRES)
+			TIE &= ~0x01;
+		else if(channel == PRES2)
+			TIE &= ~0x20;
+    }    
+}
+/****************************************************************************
+*  motor_micro_update(char channel, char dir) -
+*
+* Description : Control motor drivers PWM value and polarity
+*			  :  
+* Example     : N/A  
+* Input 	  : motor channel, direction
+* Output	  : MotorCurStyep[?]
+* Modify      : Motor driver PWM value and polarity
+* Return      : N/A
+****************************************************************************/
+static void motor_micro_update(uchar channel, uchar dir)
+{
+ 	unsigned char	*motor_channel;
+	int		ctemp=0,itemp=0;
+
+	if(dir == CLOCKWISE)
+    {
+    	;
+	}
+	
+	itemp = MotorFinalStep[channel] - MotorCurStep[channel];
+	
+	if (itemp!=0)
+	{
+        if (itemp<0)  
+        	MotorCurStep[channel]--;
+        else if (itemp>0)  
+        	MotorCurStep[channel]++;
+	
+	  motor_channel= (uchar*)(&MCDC0 + channel*2);
+	
+	  ctemp = MotorCurStep[channel];
+	  ctemp = ctemp%24;
+      if(ctemp<STEP01)
+	  {
+          MCCTL1_RECIRC = 0;
+          *motor_channel &= ~S0_DTC;         //Duty cycle channel 0 
+          						 
+          MCCTL1_RECIRC = 1;
+          *(motor_channel+2) |= S1_DTC;      //Duty cycle channel 1 
+	  } 
+	  else if((ctemp>=STEP01)&&(ctemp<STEP1))
+	  {
+          MCCTL1_RECIRC = 0;
+          *motor_channel &= ~S0_DTC;       
+          						 
+          *(motor_channel+2) &= ~S1_DTC;    
+	  }
+	  else if((ctemp>=STEP1)&&(ctemp<STEP2))
+	  {
+          MCCTL1_RECIRC = 1;
+          *motor_channel |= S0_DTC;         
+          
+          MCCTL1_RECIRC = 0;
+          *(motor_channel+2) &= ~S1_DTC;    
+	  }
+	  else if((ctemp>=STEP2)&&(ctemp<STEP23))
+	  {  
+          MCCTL1_RECIRC = 1;
+          *motor_channel |= S0_DTC;       
+          
+          MCCTL1_RECIRC = 0;
+          *(motor_channel+2) &= ~S1_DTC;      
+	  }
+	  else if((ctemp>=STEP23)&&(ctemp<STEP3))
+	  {  
+          MCCTL1_RECIRC = 1;
+          *motor_channel |= S0_DTC;          
+          
+          *(motor_channel+2) |= S1_DTC;       
+	  }																		  
+	  else if((ctemp>=STEP3)&&(ctemp<STEP34))
+	  {
+          MCCTL1_RECIRC = 0;
+          *motor_channel &= ~S0_DTC;         
+          
+          MCCTL1_RECIRC = 1;
+          *(motor_channel+2) |= S1_DTC;      
+	  }	
+	  *(motor_channel+1) = SinTbl[ctemp];
+	  *(motor_channel+3) = CosTbl[ctemp];
+   }	
+    else
+    {
+		if(channel == Oilplant)
+        	TIE &= ~0x04;
+		else if(channel == TACHOMETER)
+        	TIE &= ~0x08;
+   		else if(channel == TEMP)
+        	TIE &= ~0x02;
+		else if(channel == Carspeed)
+			TIE &= ~0x10;
+		else if(channel == PRES)
+			TIE &= ~0x01;
+		else if(channel == PRES2)
+			TIE &= ~0x20;
+    }   
+}
+/****************************************************************************************
+@函数名称		: void Timer0(void) 					  
+@参数			: void
+@返回值 		: 无
+@描述			: Timer0中断服务程序				  
+*****************************************************************************************/
+interrupt void  tchanel0_Handler(void)  //8
+{
+  uint data_pres;
+
+  if(resetback0)
+  {  		    
+	TC0 = TC0 + 2000/PrescaleNum;
+	motor_micro_update(PRES,CLOCKWISE);
+	//motor_update(PRES,CLOCKWISE);
+  } 
+  else
+  {
+	data_pres =  MotorFinalStep[PRES]-MotorCurStep[PRES];
+	data_pres =  abs(data_pres);
+	if(data_pres>100)
+	  TC0 = TC0 + 3500/PrescaleNum;
+	else TC0 = TC0 + 5000/PrescaleNum;
+	  motor_micro_update(PRES,CLOCKWISE); 
+  } 
+  TFLG1 = 0x01;	
+}
+/****************************************************************************************
+@函数名称		: void Timer1(void) 					  
+@参数			: void
+@返回值 		: 无
+@描述			: Timer1中断服务程序				  
+*****************************************************************************************/
+interrupt	 void tchanel1_Handler(void) //9
+{
+  uint data_temp;
+   
+  if(resetback0)
+  {     
+	TC1 = TC1 + 2000/PrescaleNum;///when OSC from 16M to 8M, change the data from 2000 to 3000;10.02.22 change
+	motor_micro_update(TEMP,CLOCKWISE); 
+//	motor_update(TEMP,CLOCKWISE);
+  } 
+
+  else
+  {
+	data_temp =  MotorFinalStep[TEMP]-MotorCurStep[TEMP];
+	data_temp =  abs(data_temp);
+			
+	if(data_temp>50)
+		TC1 = TC1 + 4500/PrescaleNum;
+	else TC1 = TC1 +6000/PrescaleNum;
+	    motor_micro_update(TEMP,CLOCKWISE); 
+  }			
+  	
+  TFLG1 = 0x02;
+}
+/*****************************************************
+                
+******************************************************/
+interrupt	void tchanel2_Handler(void)
+{
+  uint data_oil;
+  
+  if(resetback0)
+  {  		  
+	TC2 = TC2 + 2000/PrescaleNum;
+	motor_micro_update(Oilplant,CLOCKWISE); 
+//	motor_update(Oilplant,CLOCKWISE);	
+  } 
+  else
+  {
+	data_oil =  MotorFinalStep[Oilplant]-MotorCurStep[Oilplant];
+	data_oil =  abs(data_oil);
+	if(data_oil>100)
+		TC2 = TC2 + 3500/PrescaleNum;
+	else TC2 = TC2 +6000/PrescaleNum;
+	    motor_micro_update(Oilplant,CLOCKWISE); 
+  }			
+  TFLG1 = 0x04;
+}
+/******************************************************
+               
+*******************************************************/
+interrupt void tchanel3_Handler(void)
+{
+  uint data_Rotation;
+   
+  if(resetback0)
+  {  		    
+	TC3 = TC3 + 1200/PrescaleNum;
+	motor_micro_update(TACHOMETER,CLOCKWISE);
+//	motor_update(TACHOMETER,CLOCKWISE);	
+  }
+  else 
+  {    
+	data_Rotation =  MotorFinalStep[TACHOMETER]-MotorCurStep[TACHOMETER];
+	data_Rotation =  abs(data_Rotation);
+
+	if(data_Rotation>1056)                         //1100
+		TC3 = TC3 + 800/PrescaleNum;///10.03.08 modify from 700 to 800
+	else if(data_Rotation>960&&data_Rotation<=1056)//1100-1200
+		TC3 = TC3 + 800/PrescaleNum;					
+	else if(data_Rotation>864&&data_Rotation<=960)//900-1000
+		TC3 = TC3 + 900/PrescaleNum;
+	else if(data_Rotation>768&&data_Rotation<=864)//800-900
+		TC3 = TC3 + 1000/PrescaleNum;
+	else if(data_Rotation>672&&data_Rotation<=768)//700-800
+		TC3 = TC3 + 1050/PrescaleNum;	
+	else if(data_Rotation>576&&data_Rotation<=672)//600-700
+		TC3 = TC3 + 1150/PrescaleNum;		
+	else if(data_Rotation>480&&data_Rotation<=576)//500-600
+		TC3 = TC3 + 1200/PrescaleNum;
+	else if(data_Rotation>384&&data_Rotation<=480)//400-500
+		TC3 = TC3 + 1500/PrescaleNum;
+	else if(data_Rotation>288&&data_Rotation<=384)//300-400
+		TC3 = TC3 + 1800/PrescaleNum;
+	else if(data_Rotation>192&&data_Rotation<=288)//200-300
+		TC3 = TC3 + 2500/PrescaleNum;				
+	else if(data_Rotation>96&&data_Rotation<=192) //100-200
+		TC3 = TC3 + 3000/PrescaleNum;
+	else if(data_Rotation>72&&data_Rotation<=96)  //50-100
+		TC3 = TC3 + 4000/PrescaleNum;
+	else if(data_Rotation>48&&data_Rotation<=72)  //50-100
+		TC3 = TC3 + 6000/PrescaleNum;
+	else if(data_Rotation>22&&data_Rotation<=48)  //0-200
+		TC3 = TC3 + 9000/PrescaleNum;	
+	else if(data_Rotation>0&&data_Rotation<=22)  //0-200
+		TC3 = TC3 + 9000/PrescaleNum+(22-data_Rotation)*100/PrescaleNum;	
+	motor_micro_update(TACHOMETER,CLOCKWISE); 
+  }	  
+
+  TFLG1 = 0x08;
+}
+/*****************************************
+
+******************************************/           //add 09-1-17
+interrupt  void tchanel4_Handler(void)
+{
+  uint data_speed;
+  
+  if(resetback0)
+  {  		  
+	TC4 = TC4 + 1200/PrescaleNum;
+	motor_micro_update(Carspeed,CLOCKWISE); 
+//	motor_update(Carspeed,CLOCKWISE);
+  } 
+  else
+  {
+	data_speed =  MotorFinalStep[Carspeed]-MotorCurStep[Carspeed];
+	data_speed =  abs(data_speed);
+
+	if(data_speed>660) //speed>30
+		TC4 = TC4 + 1200/PrescaleNum;		
+	else if(data_speed>420&&data_speed<=660)//speed=21-30
+		TC4 = TC4 + 1400/PrescaleNum;	  
+	else if(data_speed>330&&data_speed<=420)//speed=15-20
+		TC4 = TC4 + 1700/PrescaleNum;
+	else if(data_speed>220&&data_speed<=330)//speed=10-15
+		TC4 = TC4 + 2000/PrescaleNum;	
+	else if(data_speed>176&&data_speed<=220)//speed=9-10
+		TC4 = TC4 + 2500/PrescaleNum;		
+	else if(data_speed>110&&data_speed<=176)//speed=6-8
+		TC4 = TC4 + 3000/PrescaleNum;		
+	else if(data_speed>90&&data_speed<=110)//speed=4-5
+		TC4 = TC4 + 4500/PrescaleNum;
+	else if(data_speed>70&&data_speed<=90)//speed=3-4
+		TC4 = TC4 + 6000/PrescaleNum;	
+	else if(data_speed>58&&data_speed<=70)//speed=3-4
+		TC4 = TC4 + 8000/PrescaleNum;	
+	else if(data_speed>44&&data_speed<=58)
+		TC4 = TC4 + 12000/PrescaleNum;	
+	else if(data_speed>22&&data_speed<=44)
+		TC4 = TC4 + 16000/PrescaleNum;
+	else if(data_speed>0&&data_speed<=22)//speed =2;
+		TC4 = TC4 + 16000/PrescaleNum+(22-data_speed)*100/PrescaleNum;				
+		    	
+	motor_micro_update(Carspeed,CLOCKWISE); 
+  }	 
+  TFLG1 = 0x10;
+}
+/****************************************************
+
+*****************************************************/
+interrupt  void tchanel5_Handler(void)						
+{
+  uint data_pres2;
+ 
+  if(resetback0)
+  {  		  
+	TC5 = TC5 + 3000/PrescaleNum;
+	motor_micro_update(PRES2,CLOCKWISE); 
+//	motor_update(PRES2,CLOCKWISE);
+  }   		 
+  else
+  {
+	data_pres2 =  MotorFinalStep[PRES2]-MotorCurStep[PRES2];
+	data_pres2 =  abs(data_pres2);
+	if(data_pres2>100)
+		TC5 = TC5 + 3500/PrescaleNum;
+	else TC5 = TC5 +5000/PrescaleNum;
+	    motor_micro_update(PRES2,CLOCKWISE);     			      
+  }
+  TFLG1 = 0x20;
+}
+/***********************************************************************************************************
+* brief:    tmp2 channel1 capture interrupt service routine
+* author:   yao qing rui
+*arithmetic:							1公里
+		单个脉冲距离(公里）=-----------------------------------------------------------
+							车速速比（1公里走了几圈）*脉冲个数（1圈几个霍尔传感器）
+
+								捕获时钟周期（目前以16US）*两次捕获寄存器差值
+		单个脉冲时间（小时）=----------------------------------------------------------
+										3600*1000*1000(小时转换成us)
+									单个脉冲距离(公里）
+		速度（公里/小时）=---------------------------------------------------
+									单个脉冲时间（小时）
+************************************************************************************************************/
+interrupt	void	Capture6ISR(void)
+{	
+	unsigned long	Km_Capture_Num=0;
+	unsigned long	Time_100us=0;
+	unsigned char	TempSpeedData=0;
+	unsigned long	CaptureValue6Temp=0;
+	unsigned int	SpeedSendSum=0;	
+	unsigned char i,Speed_Max,Speed_Min,Temp;
+	
+	Time_Capture_Speed_Zero=0;		///when no capture,it will not enter this
+
+	Capture6CountNum++; 
+	if(Capture6CountNum==1)
+		Capture6TimeBuf[0]=TC6;
+	else
+	{
+	  	Capture6CountNum=0;
+	 	Capture6TimeBuf[1]=TC6;
+		if(Capture6TimeBuf[1]>Capture6TimeBuf[0])
+			CaptureValue6Temp=Capture6TimeBuf[1]-Capture6TimeBuf[0];
+		else
+			CaptureValue6Temp=0xffff+Capture6TimeBuf[1]-Capture6TimeBuf[0];
+		Time_100us=3600*((unsigned long)1000);	///because 3600 or 1000 is not "unsigned long", So must change type
+		Time_100us=Time_100us*1000;
+		Time_100us=Time_100us/SPEEDCAPTURETIMENUM;
+		Km_Capture_Num=Speed_Pusle_Num*((unsigned long)Speed_Rate_Num);
+		Km_Capture_Num=Km_Capture_Num*CaptureValue6Temp;
+		TempSpeedData=(unsigned char)(Time_100us/Km_Capture_Num);
+
+		SpeedDataNum++;
+		SpeedData[SpeedDataNum-1]=TempSpeedData;
+		if(TempSpeedData<SPEED_CAPTURE_SEC1)///1~10km/h
+		{
+			SendSpeedData[0]=TempSpeedData;
+			SpeedDataNum=0;
+		}
+		else if(TempSpeedData<SPEED_CAPTURE_SEC2)///10~15km/h
+		{
+			if(SpeedDataNum>=SEC2_CAPTURE_NUM)
+			{
+				Speed_Max=SpeedData[0];
+				Speed_Min=SpeedData[0];
+				SpeedSendSum=SpeedData[0];
+				
+				for(i=1;i<SEC2_CAPTURE_NUM;i++)
+				{
+					SpeedSendSum+=SpeedData[i];
+					if(Speed_Max<SpeedData[i])
+						Speed_Max=SpeedData[i];
+				}
+				SendSpeedData[0]=(unsigned char)((SpeedSendSum-Speed_Max)/2);
+				SpeedDataNum=0;///start the next capture
+			}
+		}
+		else if(TempSpeedData<SPEED_CAPTURE_SEC3)///15~20km/h
+		{
+			if(SpeedDataNum>=SEC3_CAPTURE_NUM)
+			{
+				Speed_Max=SpeedData[0];
+				Speed_Min=SpeedData[0];
+				SpeedSendSum=SpeedData[0];
+				
+				for(i=1;i<SEC3_CAPTURE_NUM;i++)
+				{
+					SpeedSendSum+=SpeedData[i];
+					if(Speed_Max<SpeedData[i])
+						Speed_Max=SpeedData[i];
+					if(Speed_Min>SpeedData[i])
+						Speed_Min=SpeedData[i];
+				}
+				SendSpeedData[0]=(unsigned char)((SpeedSendSum-Speed_Max-Speed_Min)/2);
+				SpeedDataNum=0;///start the next capture
+			}
+		}
+		else 
+		{
+			Temp=TempSpeedData/10;
+			switch(Temp)
+			{
+				case 2:			///20~30km/h
+				if(SpeedDataNum>=SEC4_CAPTURE_NUM)
+				{
+					Speed_Max=SpeedData[0];
+					Speed_Min=SpeedData[0];
+					SpeedSendSum=SpeedData[0];
+					
+					for(i=1;i<SEC4_CAPTURE_NUM;i++)
+					{
+						SpeedSendSum+=SpeedData[i];
+						if(Speed_Max<SpeedData[i])
+							Speed_Max=SpeedData[i];
+						if(Speed_Min>SpeedData[i])
+							Speed_Min=SpeedData[i];
+					}
+					SendSpeedData[0]=(unsigned char)((SpeedSendSum-Speed_Max-Speed_Min)/(SEC4_CAPTURE_NUM-2));
+					SpeedDataNum=0;///start the next capture
+				}
+				break;
+				case 3:			///30~50km/h
+				case 4:
+				if(SpeedDataNum>=SEC5_CAPTURE_NUM)
+				{
+					Speed_Max=SpeedData[0];
+					Speed_Min=SpeedData[0];
+					SpeedSendSum=SpeedData[0];
+					
+					for(i=1;i<SEC5_CAPTURE_NUM;i++)
+					{
+						SpeedSendSum+=SpeedData[i];
+						if(Speed_Max<SpeedData[i])
+							Speed_Max=SpeedData[i];
+						if(Speed_Min>SpeedData[i])
+							Speed_Min=SpeedData[i];
+					}
+					SendSpeedData[0]=(unsigned char)((SpeedSendSum-Speed_Max-Speed_Min)/(SEC5_CAPTURE_NUM-2));
+					SpeedDataNum=0;///start the next capture
+				}
+				break;
+				case 5:			///50~70km/h
+				case 6:
+				if(SpeedDataNum>=SEC6_CAPTURE_NUM)
+				{
+					Speed_Max=SpeedData[0];
+					Speed_Min=SpeedData[0];
+					SpeedSendSum=SpeedData[0];
+					
+					for(i=1;i<SEC6_CAPTURE_NUM;i++)
+					{
+						SpeedSendSum+=SpeedData[i];
+						if(Speed_Max<SpeedData[i])
+							Speed_Max=SpeedData[i];
+						if(Speed_Min>SpeedData[i])
+							Speed_Min=SpeedData[i];
+					}
+					SendSpeedData[0]=(unsigned char)((SpeedSendSum-Speed_Max-Speed_Min)/(SEC6_CAPTURE_NUM-2));
+					SpeedDataNum=0;///start the next capture
+				}
+				break;
+				case 7:			///70~90km/h
+				case 8:
+				if(SpeedDataNum>=SEC7_CAPTURE_NUM)
+				{
+					Speed_Max=SpeedData[0];
+					Speed_Min=SpeedData[0];
+					SpeedSendSum=SpeedData[0];
+					
+					for(i=1;i<SEC7_CAPTURE_NUM;i++)
+					{
+						SpeedSendSum+=SpeedData[i];
+						if(Speed_Max<SpeedData[i])
+							Speed_Max=SpeedData[i];
+						if(Speed_Min>SpeedData[i])
+							Speed_Min=SpeedData[i];
+					}
+					SendSpeedData[0]=(unsigned char)((SpeedSendSum-Speed_Max-Speed_Min)/(SEC7_CAPTURE_NUM-2));
+					SpeedDataNum=0;///start the next capture
+				}
+				break;
+				case 9:			///90~110km/h
+				case 10:
+				if(SpeedDataNum>=SEC8_CAPTURE_NUM)
+				{
+					Speed_Max=SpeedData[0];
+					Speed_Min=SpeedData[0];
+					SpeedSendSum=SpeedData[0];
+					
+					for(i=1;i<SEC8_CAPTURE_NUM;i++)
+					{
+						SpeedSendSum+=SpeedData[i];
+						if(Speed_Max<SpeedData[i])
+							Speed_Max=SpeedData[i];
+						if(Speed_Min>SpeedData[i])
+							Speed_Min=SpeedData[i];
+					}
+					SendSpeedData[0]=(unsigned char)((SpeedSendSum-Speed_Max-Speed_Min)/(SEC8_CAPTURE_NUM-2));
+					SpeedDataNum=0;///start the next capture
+				}
+				break;
+				case 11:			///110~140km/h
+				case 12:
+				case 13:	
+				case 14:
+				if(SpeedDataNum>=SEC9_CAPTURE_NUM)
+				{
+					Speed_Max=SpeedData[0];
+					Speed_Min=SpeedData[0];
+					SpeedSendSum=SpeedData[0];
+					
+					for(i=1;i<SEC9_CAPTURE_NUM;i++)
+					{
+						SpeedSendSum+=SpeedData[i];
+						if(Speed_Max<SpeedData[i])
+							Speed_Max=SpeedData[i];
+						if(Speed_Min>SpeedData[i])
+							Speed_Min=SpeedData[i];
+					}
+					SendSpeedData[0]=(unsigned char)((SpeedSendSum-Speed_Max-Speed_Min)/(SEC9_CAPTURE_NUM-2));
+					SpeedDataNum=0;///start the next capture
+				}
+				break;
+				default:
+				if(SpeedDataNum>=SEC9_CAPTURE_NUM)
+				{
+					Speed_Max=SpeedData[0];
+					Speed_Min=SpeedData[0];
+					SpeedSendSum=SpeedData[0];
+					
+					for(i=1;i<SEC9_CAPTURE_NUM;i++)
+					{
+						SpeedSendSum+=SpeedData[i];
+						if(Speed_Max<SpeedData[i])
+							Speed_Max=SpeedData[i];
+						if(Speed_Min>SpeedData[i])
+							Speed_Min=SpeedData[i];
+					}
+					SendSpeedData[0]=(unsigned char)((SpeedSendSum-Speed_Max-Speed_Min)/(SEC9_CAPTURE_NUM-2));
+					SpeedDataNum=0;///start the next capture
+				}
+				break;
+			}
+		}	
+	 } 
+	if(OnKeyBit==KeyOn)
+	{
+		if(SendSpeedData[0]>140)
+			carspeed = 140;
+		else
+			carspeed = SendSpeedData[0];
+		if(resetback0==0)
+			Xgate_CARSPEED();
+	}
+	else
+		carspeed = 0;
+	Speed_Data_Flag=1;
+	TFLG1 = 0b01000000;
+} 
+#pragma CODE_SEG DEFAULT
+////////////////////////////////////////////////////////////////////////
+#pragma CONST_SEG XGATE_VECTORS  /* assign the vector table in separate 
+segment for dedicated placement in linker parameter file */
+
+const XGATE_TableEntry XGATE_VectorTable[] = {
+                         // Channel # = Vector address / 2
+  /* channel 0..8 are not used, first used must match macro 
+XGATE_VECTOR_OFFSET in xgate.h */
+  {ErrorHandler, 0x09},  // Channel 09 - Reserved
+  {ErrorHandler, 0x0A},  // Channel 0A - Reserved
+  {ErrorHandler, 0x0B},  // Channel 0B - Reserved
+  {ErrorHandler, 0x0C},  // Channel 0C - Reserved
+  {ErrorHandler, 0x0D},  // Channel 0D - Reserved
+  {ErrorHandler, 0x0E},  // Channel 0E - Reserved
+  {ErrorHandler, 0x0F},  // Channel 0F - Reserved
+  {ErrorHandler, 0x10},  // Channel 10 - Reserved
+  {ErrorHandler, 0x11},  // Channel 11 - Reserved
+  {ErrorHandler, 0x12},  // Channel 12 - Reserved
+  {ErrorHandler, 0x13},  // Channel 13 - Reserved
+  {ErrorHandler, 0x14},  // Channel 14 - Reserved
+  {ErrorHandler, 0x15},  // Channel 15 - Reserved
+  {ErrorHandler, 0x16},  // Channel 16 - Reserved
+  {ErrorHandler, 0x17},  // Channel 17 - Reserved
+  {ErrorHandler, 0x18},  // Channel 18 - Reserved
+  {ErrorHandler, 0x19},  // Channel 19 - Reserved
+  {ErrorHandler, 0x1A},  // Channel 1A - Reserved
+  {ErrorHandler, 0x1B},  // Channel 1B - Reserved
+  {ErrorHandler, 0x1C},  // Channel 1C - Reserved
+  {ErrorHandler, 0x1D},  // Channel 1D - Reserved
+  {ErrorHandler, 0x1E},  // Channel 1E - Reserved
+  {ErrorHandler, 0x1F},  // Channel 1F - Reserved
+  {ErrorHandler, 0x20},  // Channel 20 - Reserved
+  {ErrorHandler, 0x21},  // Channel 21 - Reserved
+  {ErrorHandler, 0x22},  // Channel 22 - Reserved
+  {ErrorHandler, 0x23},  // Channel 23 - Reserved
+  {ErrorHandler, 0x24},  // Channel 24 - Reserved
+  {ErrorHandler, 0x25},  // Channel 25 - Reserved
+  {ErrorHandler, 0x26},  // Channel 26 - Reserved
+  {ErrorHandler, 0x27},  // Channel 27 - Reserved
+  {ErrorHandler, 0x28},  // Channel 28 - Reserved
+  {ErrorHandler, 0x29},  // Channel 29 - Reserved
+  {ErrorHandler, 0x2A},  // Channel 2A - Reserved
+  {ErrorHandler, 0x2B},  // Channel 2B - Reserved
+  {ErrorHandler, 0x2C},  // Channel 2C - Reserved
+  {ErrorHandler, 0x2D},  // Channel 2D - Reserved
+  {ErrorHandler, 0x2E},  // Channel 2E - Reserved
+  {ErrorHandler, 0x2F},  // Channel 2F - Reserved
+  {ErrorHandler, 0x30},  // Channel 30 - XSRAM20K Access Violation
+  {ErrorHandler, 0x31},  // Channel 31 - XGATE Software Error Interrupt     
+  {ErrorHandler, 0x32},  // Channel 32 - XGATE Software Trigger 7           
+  {ErrorHandler, 0x33},  // Channel 33 - XGATE Software Trigger 6           
+  {ErrorHandler, 0x34},  // Channel 34 - XGATE Software Trigger 5           
+  {ErrorHandler, 0x35},  // Channel 35 - XGATE Software Trigger 4           
+  {ErrorHandler, 0x36},  // Channel 36 - XGATE Software Trigger 3           
+  {ErrorHandler, 0x37},  // Channel 37 - XGATE Software Trigger 2           
+  {ErrorHandler, 0x38},  // Channel 38 - XGATE Software Trigger 1           
+  {ErrorHandler, 0x39},  // Channel 39 - XGATE Software Trigger 0       
+  {ErrorHandler, 0x3A},  // Channel 3A - Periodic Interrupt Timer           
+  {ErrorHandler, 0x3B},  // Channel 3B - Periodic Interrupt Timer           
+  {ErrorHandler, 0x3C},  // Channel 3C - Periodic Interrupt Timer           
+  {ErrorHandler, 0x3D},  // Channel 3D - Periodic Interrupt Timer           
+  {ErrorHandler, 0x3E},  // Channel 3E - Reserved                           
+  {ErrorHandler, 0x3F},  // Channel 3F - Autonomous Periodical interrupt API
+  {ErrorHandler, 0x40},  // Channel 40 - Low Voltage interrupt LVI
+  {ErrorHandler, 0x41},  // Channel 41 - IIC1 Bus                 
+  {ErrorHandler, 0x42},  // Channel 42 - SCI5                     
+  {ErrorHandler, 0x43},  // Channel 43 - SCI4                     
+  {ErrorHandler, 0x44},  // Channel 44 - SCI3                     
+  {ErrorHandler, 0x45},  // Channel 45 - SCI2                     
+  {ErrorHandler, 0x46},  // Channel 46 - PWM Emergency Shutdown   
+  {ErrorHandler, 0x47},  // Channel 47 - Port P Interrupt         
+  {ErrorHandler, 0x48},  // Channel 48 - CAN4 transmit            
+  {ErrorHandler, 0x49},  // Channel 49 - CAN4 receive             
+  {ErrorHandler, 0x4A},  // Channel 4A - CAN4 errors              
+  {ErrorHandler, 0x4B},  // Channel 4B - CAN4 wake-up             
+  {ErrorHandler, 0x4C},  // Channel 4C - CAN3 transmit            
+  {ErrorHandler, 0x4D},  // Channel 4D - CAN3 receive             
+  {ErrorHandler, 0x4E},  // Channel 4E - CAN3 errors              
+  {ErrorHandler, 0x4F},  // Channel 4F - CAN3 wake-up             
+  {ErrorHandler, 0x50},  // Channel 50 - CAN2 transmit
+  {ErrorHandler, 0x51},  // Channel 51 - CAN2 receive 
+  {ErrorHandler, 0x52},  // Channel 52 - CAN2 errors  
+  {ErrorHandler, 0x53},  // Channel 53 - CAN2 wake-up 
+  {ErrorHandler, 0x54},  // Channel 54 - CAN1 transmit
+  {ErrorHandler, 0x55},  // Channel 54 - CAN1 transmit
+  {ErrorHandler, 0x56},  // Channel 54 - CAN1 transmit
+  {ErrorHandler, 0x57},  // Channel 57 - CAN1 wake-up 
+  {ErrorHandler, 0x58},  // Channel 58 - CAN0 transmit
+  {ErrorHandler, 0x59},  // Channel 59 - CAN0 receive 
+  {ErrorHandler, 0x5A},  // Channel 5A - CAN0 errors  
+  {ErrorHandler, 0x5B},  // Channel 5B - CAN0 wake-up 
+  {ErrorHandler, 0x5C},  // Channel 5C - FLASH 
+  {ErrorHandler, 0x5D},  // Channel 5D - EEPROM
+  {ErrorHandler, 0x5E},  // Channel 5E - SPI2  
+  {ErrorHandler, 0x5F},  // Channel 5F - SPI1
+  {ErrorHandler, 0x60},  // Channel 60 - IIC0 Bus                         
+  {ErrorHandler, 0x61},  // Channel 61 - Reserved                         
+  {ErrorHandler, 0x62},  // Channel 62 - CRG Self Clock Mode              
+  {ErrorHandler, 0x63},  // Channel 63 - CRG PLL lock                     
+  {ErrorHandler, 0x64},  // Channel 64 - Pulse Accumulator B Overflow     
+  {ErrorHandler, 0x65},  // Channel 65 - Modulus Down Counter underflow   
+  {ErrorHandler, 0x66},  // Channel 66 - Port H                           
+  {ErrorHandler, 0x67},  // Channel 67 - Port J                           
+  {ErrorHandler, 0x68},  // Channel 68 - ATD1                             
+  {ErrorHandler, 0x69},  // Channel 69 - ATD0                             
+  {ErrorHandler, 0x6A},  // Channel 6A - SCI1                             
+  {ErrorHandler, 0x6B},  // Channel 6B - SCI0                             
+  {ErrorHandler, 0x6C},  // Channel 6C - SPI0                             
+  {ErrorHandler, 0x6D},  // Channel 6D - Pulse accumulator input edge     
+  {ErrorHandler, 0x6E},  // Channel 6E - Pulse accumulator A overflow     
+  {ErrorHandler, 0x6F},  // Channel 6F - Enhanced Capture Timer overflow  
+  {ErrorHandler, 0x70},  // Channel 70 - Enhanced Capture Timer channel 7
+  {(XGATE_Function)Capture6ISR, 0x71},  // Channel 71 - Enhanced Capture Timer channel 6   
+  {(XGATE_Function)tchanel5_Handler, 0x72},  // Channel 72 - Enhanced Capture Timer channel 5 
+  {(XGATE_Function)tchanel4_Handler, 0x73},  // Channel 73 - Enhanced Capture Timer channel 4 
+  {(XGATE_Function)tchanel3_Handler, 0x74},  // Channel 74 - Enhanced Capture Timer channel 3 
+  {(XGATE_Function)tchanel2_Handler, 0x75},  // Channel 75 - Enhanced Capture Timer channel 2 
+  {(XGATE_Function)tchanel1_Handler, 0x76},  // Channel 76 - Enhanced Capture Timer channel 1 
+  {(XGATE_Function)tchanel0_Handler, 0x77},   //Channel 77 - Enhanced Capture Timer channel 0  
+  {ErrorHandler, 0x78},  // Channel 78 - Real Time Interrupt 
+  {ErrorHandler, 0x79},  // Channel 79 - IRQ
+};
+

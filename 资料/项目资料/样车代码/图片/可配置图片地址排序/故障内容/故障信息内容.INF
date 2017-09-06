@@ -1,0 +1,12 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset故障信息内容 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 故障信息内容[] = { 
+    { offset故障信息内容+0x000000, 0x2A2060 },    // 故障信息内容 
+}; 

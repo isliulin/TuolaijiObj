@@ -1,0 +1,15 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER ̥ѹѧϰ����_H[] = { 
+    { 0x88, 0x84, 0x0320, 0x01E0, 0x00020ED5, 0x01, 0xFF },     // ̥ѹѧϰ 
+}; 

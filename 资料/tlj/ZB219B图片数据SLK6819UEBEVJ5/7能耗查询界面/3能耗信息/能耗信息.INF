@@ -1,0 +1,22 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset能耗信息 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 能耗信息[] = { 
+    { offset能耗信息+0x000000, 0x00E747 },    // 控制器信息-1 
+    { offset能耗信息+0x00E747, 0x010DE4 },    // 控制器信息-2 
+    { offset能耗信息+0x01F52B, 0x0139B9 },    // 控制器信息-3 
+    { offset能耗信息+0x032EE4, 0x011971 },    // BMS信息-1 
+    { offset能耗信息+0x044855, 0x0158CC },    // BMS信息-2 
+    { offset能耗信息+0x05A121, 0x014ED8 },    // BMS信息-3 
+    { offset能耗信息+0x06EFF9, 0x00EF09 },    // 单体电池信息 
+    { offset能耗信息+0x07DF02, 0x01206B },    // 单体温度信息 
+    { offset能耗信息+0x08FF6D, 0x009D4E },    // 绝缘监测 
+    { offset能耗信息+0x099CBB, 0x009497 },    // 热管理机组信息-1 
+    { offset能耗信息+0x0A3152, 0x0120C7 },    // 燃料电池信息-1 
+}; 
