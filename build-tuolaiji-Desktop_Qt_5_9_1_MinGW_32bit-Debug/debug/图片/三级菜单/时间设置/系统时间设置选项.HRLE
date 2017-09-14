@@ -1,0 +1,17 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER 系统时间设置选项_H[] = { 
+    { 0x88, 0x00, 0x01C0, 0x003F, 0x00006E40, 0x01, 0xFF },     // 日期 
+    { 0x88, 0x00, 0x01C0, 0x003F, 0x00006E40, 0x01, 0xFF },     // 时间 
+    { 0x88, 0x00, 0x0153, 0x0032, 0x00004236, 0x01, 0xFF },     // 时间设置错误 
+}; 

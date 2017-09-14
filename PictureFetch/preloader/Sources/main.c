@@ -38,7 +38,7 @@ void WaitXmodemStart(void) {
 
 // |                     data format                      |
 // | start | type | data len |  data          |  CRC  | end  |
-// | 0xaa  | 0x01 |  Lx   Hx |  xx ... xx  xx | Lx Hx | 0xbb |
+// | 0xaa  | 0x01 |  Lx   Hx |  xx ... xx  xx |  xx   | 0xbb |
 //                               |   |   |        |
 // | ----- | ---- | -------- |  xx + ... +xx  =  CRC  | ---- |
 typedef struct XmodemData{

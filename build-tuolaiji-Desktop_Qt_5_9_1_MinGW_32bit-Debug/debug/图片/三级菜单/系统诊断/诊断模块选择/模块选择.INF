@@ -1,0 +1,19 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset模块选择 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 模块选择[] = { 
+    { offset模块选择+0x000000, 0x00B561 },    // 仪表 
+    { offset模块选择+0x00B561, 0x00B263 },    // 前控 
+    { offset模块选择+0x0167C4, 0x00B238 },    // 后控 
+    { offset模块选择+0x0219FC, 0x00B5D4 },    // 顶控 
+    { offset模块选择+0x02CFD0, 0x00B914 },    // 配电 
+    { offset模块选择+0x0388E4, 0x00BC42 },    // 电源管理模块 
+    { offset模块选择+0x044526, 0x00BBBC },    // 模块温度 
+    { offset模块选择+0x0500E2, 0x00B943 },    // 发动机 
+}; 

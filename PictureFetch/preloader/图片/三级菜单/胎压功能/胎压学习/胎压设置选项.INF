@@ -1,0 +1,23 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset胎压设置选项 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 胎压设置选项[] = { 
+    { offset胎压设置选项+0x000000, 0x002D92 },    // 设置超时-上 
+    { offset胎压设置选项+0x002D92, 0x002D92 },    // 设置成功-上 
+    { offset胎压设置选项+0x005B24, 0x002D92 },    // 设置中-上 
+    { offset胎压设置选项+0x0088B6, 0x002D92 },    // 胎压学习-上 
+    { offset胎压设置选项+0x00B648, 0x002D92 },    // 设置超时-下 
+    { offset胎压设置选项+0x00E3DA, 0x002D92 },    // 设置成功-下 
+    { offset胎压设置选项+0x01116C, 0x002D92 },    // 设置中-下 
+    { offset胎压设置选项+0x013EFE, 0x002D92 },    // 胎压学习-下 
+    { offset胎压设置选项+0x016C90, 0x002D92 },    // 设置超时-中 
+    { offset胎压设置选项+0x019A22, 0x002D92 },    // 设置成功-中 
+    { offset胎压设置选项+0x01C7B4, 0x002D92 },    // 设置中-中 
+    { offset胎压设置选项+0x01F546, 0x002D92 },    // 胎压学习-中 
+}; 

@@ -1,6 +1,6 @@
 #ifndef __MX25L12845D
 #define __MX25L12845D
-#include <mc9s12xhz512.h>
+#include <mc9s12xhz256.h>
 #include "type.h"
 #include "Flash.h"
 

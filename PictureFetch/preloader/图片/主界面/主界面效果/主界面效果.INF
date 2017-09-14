@@ -1,0 +1,38 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset主界面效果 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 主界面效果[] = { 
+    { offset主界面效果+0x000000, 0x002D50 },    // 电量指示1 
+    { offset主界面效果+0x002D50, 0x002D50 },    // 电量指示2 
+    { offset主界面效果+0x005AA0, 0x002D50 },    // 电量指示3 
+    { offset主界面效果+0x0087F0, 0x002D50 },    // 电量指示4 
+    { offset主界面效果+0x00B540, 0x002D50 },    // 电量指示5 
+    { offset主界面效果+0x00E290, 0x002D50 },    // 电量指示6 
+    { offset主界面效果+0x010FE0, 0x002D50 },    // 电量指示7 
+    { offset主界面效果+0x013D30, 0x002D50 },    // 电量指示8 
+    { offset主界面效果+0x016A80, 0x002D50 },    // 电量指示9 
+    { offset主界面效果+0x0197D0, 0x002D50 },    // 电量指示10 
+    { offset主界面效果+0x01C520, 0x002D50 },    // 油量指示1-0 
+    { offset主界面效果+0x01F270, 0x002D50 },    // 油量指示1-1 
+    { offset主界面效果+0x021FC0, 0x002D50 },    // 油量指示2 
+    { offset主界面效果+0x024D10, 0x002D50 },    // 油量指示3 
+    { offset主界面效果+0x027A60, 0x002D50 },    // 油量指示4 
+    { offset主界面效果+0x02A7B0, 0x002D50 },    // 油量指示5 
+    { offset主界面效果+0x02D500, 0x002D50 },    // 油量指示6 
+    { offset主界面效果+0x030250, 0x002D50 },    // 油量指示7-0 
+    { offset主界面效果+0x032FA0, 0x002D50 },    // 油量指示7-1 
+    { offset主界面效果+0x035CF0, 0x002D50 },    // 油量指示8 
+    { offset主界面效果+0x038A40, 0x002D50 },    // 油量指示9 
+    { offset主界面效果+0x03B790, 0x002D50 },    // 油量指示10 
+    { offset主界面效果+0x03E4E0, 0x011481 },    // 前门关后门关 
+    { offset主界面效果+0x04F961, 0x011481 },    // 前门关后门开 
+    { offset主界面效果+0x060DE2, 0x011481 },    // 前门开后门关 
+    { offset主界面效果+0x072263, 0x011481 },    // 前门开后门开 
+    { offset主界面效果+0x0836E4, 0x025790 },    // 首界面 
+}; 

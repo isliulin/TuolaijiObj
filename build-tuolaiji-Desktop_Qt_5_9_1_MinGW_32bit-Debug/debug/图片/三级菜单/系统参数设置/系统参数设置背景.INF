@@ -1,0 +1,12 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset系统参数设置背景 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 系统参数设置背景[] = { 
+    { offset系统参数设置背景+0x000000, 0x014BA4 },    // 系统参数 
+}; 

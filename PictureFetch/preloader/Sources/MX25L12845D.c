@@ -1,6 +1,6 @@
 #define	  _NO_MX25L12845D_EXTERN
 #include "MX25L12845D.h"
-#include "can0.h"
+//#include "can0.h"
 /********************************************************************************* 
 *函数原型：SPI_WriteByte(U8 byte) 
 *函数功能： SCK上升沿向芯片输入数据有效  
@@ -70,7 +70,7 @@ static uchar Flash_WaitBusy(void)
 		WaitDelay++;
 		if(WaitDelay%1000==0)///当等待的时间过长为1000的倍数时需清外置看门狗
 		{
-			out_wdt_reset();
+		//	out_wdt_reset();
 		 	if(WaitDelay>60000)
 		 	{
 		 		Error_Data=err_flash_unkown;
