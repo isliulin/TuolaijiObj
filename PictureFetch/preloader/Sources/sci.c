@@ -108,9 +108,9 @@ U8 uart_waitchar(void) {
 	{
 		temp++;
     //out_wdt_reset();
-		if(temp>=60000){
-			while(1);
-		}
+	//	if(temp>=60000){
+	//		while(1);
+	//	}
 	}
 	temp = 0;
 	temp1=SCI0SR1;	

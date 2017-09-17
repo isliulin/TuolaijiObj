@@ -46,7 +46,7 @@ typedef struct XmodemData{
   U8 Type;
   UnionData Datalen;
   U8  Data[512];
-  UnionData Crc;
+  U8  Crc;
   U8 End;
   
   U8 isFinish; // 是否接受完成
@@ -58,7 +58,7 @@ void clearPacketData(XmodemData *pdata) {
     pdata->Type   = 0x00;
     pdata->Datalen.data16 = 0x00;	
       
-    pdata->Crc.data16    = 0x00;
+    pdata->Crc    = 0x00;
     
     pdata->End    = 0x00;                      
     pdata->isFinish = 0x00;	
@@ -102,8 +102,7 @@ void RecviceXmodemData(XmodemData* Packet) {
      {
        Packet->Data[i] = uart_waitchar();
      }
-     Packet->Crc.data8[0] = uart_waitchar();	
-     Packet->Crc.data8[1] = uart_waitchar();
+     Packet->Crc = uart_waitchar();	
      Packet->End          = uart_waitchar();
      
      //crc 校验

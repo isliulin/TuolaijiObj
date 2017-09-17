@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "d:\Users\Administrator\Desktop\obj\PictureFetch\preloader\bin\Project.abs"
+PROGRAM "D:\TuolaijiObj\PictureFetch\preloader\bin\Project.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -24,7 +24,7 @@ Entry point: 0xC000 (_Startup)
 _startupData is allocated at 0xC00F and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x2100     539
+  _Range   pZeroOut       0x2100     538
   _Copy    *toCopyDownBeg 0xC021
 } _startupData;
 
@@ -35,7 +35,7 @@ Section Name                    Size  Type     From       To       Segment
 .init                             15     R     0xC000     0xC00E   ROM_C000
 .startData                        18     R     0xC00F     0xC020   ROM_C000
 .copy                              2     R     0xC021     0xC022   ROM_C000
-.text                            429     R   0xFE8000   0xFE81AC   PAGE_FE
+.text                            411     R   0xFE8000   0xFE819A   PAGE_FE
 .stack                           256   R/W     0x2000     0x20FF   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
@@ -552,12 +552,12 @@ Section Name                    Size  Type     From       To       Segment
 .abs_section_3ac                   2   N/I      0x3AC      0x3AD   .absSeg512
 .abs_section_3ae                   2   N/I      0x3AE      0x3AF   .absSeg513
 .bss                               2   R/W     0x2100     0x2101   RAM
-.common                          537   R/W     0x2102     0x231A   RAM
+.common                          536   R/W     0x2102     0x2319   RAM
 .vectSeg514_vect                   2     R     0xFFFE     0xFFFF   .vectSeg514
 
 Summary of section sizes per section type:
-READ_ONLY (R):         1D2 (dec:      466)
-READ_WRITE (R/W):      31B (dec:      795)
+READ_ONLY (R):         1C0 (dec:      448)
+READ_WRITE (R/W):      31A (dec:      794)
 NO_INIT (N/I):         27B (dec:      635)
 
 *********************************************************************************************
@@ -1090,18 +1090,18 @@ MODULE:                 -- mc9s12xhz256.c.o --
 MODULE:                 -- main.c.o --
 - PROCEDURES:
      uart_init                               FE8000       5       5       2   .text       
-     clearPacketData                         FE8005      14      20       2   .text       
-     RecviceXmodemData                       FE8019      57      87       2   .text       
-     reciveMsgPacket                         FE8070      4D      77       2   .text       
-     recivePicturePacket                     FE80BD      52      82       2   .text       
-     AnalysisXmodemData                      FE810F      22      34       2   .text       
-     spiflash_init                           FE8131       1       1       2   .text       
-     main                                    FE8132      24      36       2   .text       
+     clearPacketData                         FE8005      13      19       2   .text       
+     RecviceXmodemData                       FE8018      51      81       2   .text       
+     reciveMsgPacket                         FE8069      4D      77       2   .text       
+     recivePicturePacket                     FE80B6      52      82       2   .text       
+     AnalysisXmodemData                      FE8108      22      34       2   .text       
+     spiflash_init                           FE812A       1       1       2   .text       
+     main                                    FE812B      24      36       2   .text       
 - VARIABLES:
-     PictureMsg                                2102     219     537       2   .common     
+     PictureMsg                                2102     218     536       2   .common     
 MODULE:                 -- Start12.c.o --
 - PROCEDURES:
-     Init                                    FE8156      29      41       2   .text       
+     Init                                    FE814F      29      41       2   .text       
      _Startup                                  C000       F      15       0   .init       
 - VARIABLES:
      _startupData                              C00F       6       6       3   .startData  
@@ -1109,19 +1109,19 @@ MODULE:                 -- Start12.c.o --
      __SEG_END_SSTACK                          2100       0       0       1               
 MODULE:                 -- sci.c.o --
 - PROCEDURES:
-     SCI0_Init                               FE817F      11      17       2   .text       
-     uart_waitchar                           FE8190      1D      29       4   .text       
+     SCI0_Init                               FE8178      11      17       2   .text       
+     uart_waitchar                           FE8189      12      18       4   .text       
 - VARIABLES:
-     temp.1                                    2100       2       2       3   .bss        
+     temp.1                                    2100       2       2       2   .bss        
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   mc9s12xhz256.c.o                           635      0      0
-  main.c.o                                   537    342      0
+  main.c.o                                   536    335      0
   Start12.c.o                                  0     56      0
-  sci.c.o                                      2     46      0
+  sci.c.o                                      2     35      0
   other                                      256     20      2
 
 *********************************************************************************************
@@ -2684,20 +2684,20 @@ OBJECT LIST SORTED BY ADDRESS
      _XGR5                                      3AA       2       2       0   .abs_section_3aa
      _XGR6                                      3AC       2       2       0   .abs_section_3ac
      _XGR7                                      3AE       2       2       0   .abs_section_3ae
-     temp.1                                    2100       2       2       3   .bss        
-     PictureMsg                                2102     219     537       2   .common     
+     temp.1                                    2100       2       2       2   .bss        
+     PictureMsg                                2102     218     536       2   .common     
      _Startup                                  C000       F      15       0   .init       
      uart_init                               FE8000       5       5       2   .text       
-     clearPacketData                         FE8005      14      20       2   .text       
-     RecviceXmodemData                       FE8019      57      87       2   .text       
-     reciveMsgPacket                         FE8070      4D      77       2   .text       
-     recivePicturePacket                     FE80BD      52      82       2   .text       
-     AnalysisXmodemData                      FE810F      22      34       2   .text       
-     spiflash_init                           FE8131       1       1       2   .text       
-     main                                    FE8132      24      36       2   .text       
-     Init                                    FE8156      29      41       2   .text       
-     SCI0_Init                               FE817F      11      17       2   .text       
-     uart_waitchar                           FE8190      1D      29       4   .text       
+     clearPacketData                         FE8005      13      19       2   .text       
+     RecviceXmodemData                       FE8018      51      81       2   .text       
+     reciveMsgPacket                         FE8069      4D      77       2   .text       
+     recivePicturePacket                     FE80B6      52      82       2   .text       
+     AnalysisXmodemData                      FE8108      22      34       2   .text       
+     spiflash_init                           FE812A       1       1       2   .text       
+     main                                    FE812B      24      36       2   .text       
+     Init                                    FE814F      29      41       2   .text       
+     SCI0_Init                               FE8178      11      17       2   .text       
+     uart_waitchar                           FE8189      12      18       4   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -2773,5 +2773,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 5
-Total size of all blocks to be downloaded: 466
+Total size of all blocks to be downloaded: 448
 
