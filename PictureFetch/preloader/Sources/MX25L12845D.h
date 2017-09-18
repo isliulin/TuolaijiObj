@@ -1,8 +1,10 @@
 #ifndef __MX25L12845D
 #define __MX25L12845D
-#include <mc9s12xhz256.h>
+//#include <mc9s12xhz256.h>
 #include "type.h"
-#include "Flash.h"
+//#include "Flash.h"
+#include <hidef.h>      /* common defines and macros */
+#include "derivative.h"
 
 /**************condition macros***************/
 #ifndef	_NO_MX25L12845D_EXTERN
@@ -10,6 +12,19 @@
 #else
 #define	_MX25L12845D_EXTERN 
 #endif
+
+
+
+//
+#define err_flash_unkown   				0xF0
+#define err_flash_checksum 				0xF1
+#define err_flash_lenth   	 					0xF2
+#define err_flash_clear    						0xF3
+#define	 err_flash_Write_checksum		0xF4
+#define flash_OK					 				0x01
+
+
+
 /*********************IO macros****************************/	
 #define	ISD_MISO							PTS_PTS4
 #define	ISD_MISO_IO	  			DDRS_DDRS4

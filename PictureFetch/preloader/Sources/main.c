@@ -4,6 +4,7 @@
 #include "sci.h"     //uart function
 #include "typedef.h"
 #include "Xmodule.h"
+#include "MX25L12845D.h"
                                  
 
 
@@ -30,15 +31,19 @@ void main(void) {
   /* put your own code here */
   
   dword  timercount = 0;
+  unsigned char flashID = 0;
   
   asm sei;///πÿ±’÷–∂œ
   
   Xmodule_init();
   
+  
   spiflash_init();
-   
+  Bootloader_Mode_Change();
+  flashID = Flash_Read_ID();
   for(;;) {
-    XmodemWaitStart();
+   // XmodemWaitStart();
+  // char ret = XmodemRecivePacket(&PictureMsg.Packet);
     
    // RecviceXmodemData(&PictureMsg.Packet);  //  have finish a packet
    // AnalysisXmodemData(&PictureMsg);   

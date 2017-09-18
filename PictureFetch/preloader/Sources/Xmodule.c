@@ -44,7 +44,6 @@ U8 CheckSum(U8* buff, U32 bufflen) {
 void RecviceData(XmodemData* Packet) {
      U16 Datalen;
      U16 i;
-      
      clearPacketData(Packet);
      Packet->Start = uart_waitchar();
      Packet->Type  = uart_waitchar();

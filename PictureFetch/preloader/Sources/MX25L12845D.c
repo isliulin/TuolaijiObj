@@ -76,7 +76,7 @@ static uchar Flash_WaitBusy(void)
 		 		Error_Data=err_flash_unkown;
 		 		break;
 		 	}
-			CAN0_ReadFrame();
+//			CAN0_ReadFrame();
 		}
 	} 
 	while(state_reg&0x01); ///是否在空闲状态
@@ -144,7 +144,7 @@ uchar Erase_Sector(uint Sector_Number)
 { 
  	uchar Error_Data;
 
-	out_wdt_reset();
+//	out_wdt_reset();
 	CS_L(); 
 	SPI_WriteByte(FLASH_WRITE_ENABLE); 
 	CS_H(); 
@@ -172,7 +172,7 @@ uchar Erase_Block(uchar Block_Number)
 { 
   uchar Error_Data;
 
-	out_wdt_reset();
+//	out_wdt_reset();
   CS_L(); 
   SPI_WriteByte(FLASH_WRITE_ENABLE); 
   CS_H(); 
@@ -202,7 +202,7 @@ uchar Flash_PageWrite(uint page,uint addr,uint len,uchar *pdata)
   	ulong Address_Temp; 
   	uint i;
 
-	out_wdt_reset();
+	//out_wdt_reset();
 	Address_Temp=( ((ulong)page)<<8 )+addr;     
 	CS_L();
 	SPI_WriteByte(FLASH_WRITE_ENABLE);	
@@ -220,8 +220,8 @@ uchar Flash_PageWrite(uint page,uint addr,uint len,uchar *pdata)
 	for(i = 0; i< len; i++)   
 	{ 
 		SPI_WriteByte(*(pdata+i));
-		if(i%1000==0)///当所读的数据过大时，清一次外置看门狗
-	  	out_wdt_reset();	
+	//	if(i%1000==0)///当所读的数据过大时，清一次外置看门狗
+	//  	out_wdt_reset();	
 	} 
   	CS_H(); 
   
@@ -294,7 +294,7 @@ uchar Flash_PageRead(ulong addr,uint len,uchar *pdata)
 	uchar	Error_Data;
   uint	i;   
 
-	out_wdt_reset();
+//	out_wdt_reset();
   CS_L(); 
   SPI_WriteByte(FLASH_WRITE_ENABLE);	
   CS_H(); 	  
@@ -311,8 +311,8 @@ uchar Flash_PageRead(ulong addr,uint len,uchar *pdata)
   for(i = 0 ; i< len; i++) 
   { 
 		*(pdata+i) = SPI_ReadByte(); 
-		if(i%1000==0)///当所读的数据过大时，清一次外置看门狗
-    	out_wdt_reset();					
+//		if(i%1000==0)///当所读的数据过大时，清一次外置看门狗
+//    	out_wdt_reset();					
   } 
   CS_H();	   
   
