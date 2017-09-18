@@ -24,7 +24,7 @@ void main(void)
 	s19RxCount =0;
 	for(;;)
 	{
-	   out_wdt_reset();
+	   	out_wdt_reset();
 		CAN0_ReadFrame();
 		BootloadDeal();
 		StateDetectWait();

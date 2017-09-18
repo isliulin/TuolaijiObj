@@ -1,7 +1,10 @@
 #ifndef	_SCI_H_
 #define	_SCI_H_
 
-#include "config.h"
+//#include "config.h"
+#include <hidef.h>      /* common defines and macros */
+#include "derivative.h"
+#include "typedef.h"
 
 #define SCI0_NUM    128
 #define SCI1_NUM    12

@@ -1,0 +1,5 @@
+---- BootLoader_Content Matches (4 in 3 files) ----
+CAN0_ReadFrame in can0.c (Sources) : 					BootLoader_Content=rev_can_packet.data[1];
+CAN0_ReadFrame in can0.c (Sources) : 					BootLoader_Content=rev_can_packet.data[1];
+can0.h (Sources) line 29 : _can0_EXTERN  uchar	 BootLoader_Content;///下载内容识别  
+chip_erase in Flash.c (Sources) : 	if(BootLoader_Content==BOOT_CONFIG)

@@ -189,6 +189,7 @@ union
 
 void main(void)
 {
+	ulong
   	uchar i,j,tempp;
   //	uchar pt[128]={1,2,3,4,5,6};
 	//uint crc;
