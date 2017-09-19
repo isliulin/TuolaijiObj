@@ -333,14 +333,14 @@ uchar Flash_PageRead(ulong addr,uint len,uchar *pdata)
 void	Bootloader_Mode_Change(void)
 {
 	///给视频板供电
-	V_5V_CTRL_IO=1;
-	V_5V_CTRL=1;       
+	V_5V_CTRL_IO  = IO_OUTPUT; 
+	V_5V_CTRL     = IO_HIGHT;        
 	///下载外挂FLASH使能脚
-	DOWNLOAD_CTRL_IO=1; 
-	DOWNLOAD_CTRL=1; 
+	DOWNLOAD_CTRL_IO =  IO_OUTPUT; 
+	DOWNLOAD_CTRL    =  IO_HIGHT; 
 	///电平转换芯片的S脚，即模块切换
-	MODE_CTRL_IO=1;
-	MODE_CTRL=1;///为高电平时可烧写外挂FLASH
+	MODE_CTRL_IO  = IO_OUTPUT;
+	MODE_CTRL     = IO_HIGHT;///为高电平时可烧写外挂FLASH
 	///信号输入
 	ISD_MISO_IO=0;
 	///信号输出脚

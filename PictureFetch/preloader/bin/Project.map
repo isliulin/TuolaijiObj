@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "D:\TuolaijiObj\PictureFetch\preloader\bin\Project.abs"
+PROGRAM "d:\Users\Administrator\Desktop\obj\PictureFetch\preloader\bin\Project.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -574,8 +574,8 @@ OBJECT-ALLOCATION SECTION
 MODULE:                 -- mc9s12xhz256.c.o --
 - PROCEDURES:
 - VARIABLES:
-     _PORTE                                       8       1       1       1   .abs_section_8
-     _DDRE                                        9       1       1       1   .abs_section_9
+     _PORTE                                       8       1       1       0   .abs_section_8
+     _DDRE                                        9       1       1       0   .abs_section_9
      _MMCCTL0                                     A       1       1       0   .abs_section_a
      _MODE                                        B       1       1       0   .abs_section_b
      _PUCR                                        C       1       1       0   .abs_section_c
@@ -605,8 +605,8 @@ MODULE:                 -- mc9s12xhz256.c.o --
      _DBGXDHM                                    2E       1       1       0   .abs_section_2e
      _DBGXDLM                                    2F       1       1       0   .abs_section_2f
      _PPAGE                                      30       1       1       0   .abs_section_30
-     _PORTK                                      32       1       1       1   .abs_section_32
-     _DDRK                                       33       1       1       1   .abs_section_33
+     _PORTK                                      32       1       1       0   .abs_section_32
+     _DDRK                                       33       1       1       0   .abs_section_33
      _SYNR                                       34       1       1       0   .abs_section_34
      _REFDV                                      35       1       1       0   .abs_section_35
      _CRGFLG                                     37       1       1       0   .abs_section_37
@@ -969,8 +969,8 @@ MODULE:                 -- mc9s12xhz256.c.o --
      _XGCCR                                     39D       1       1       0   .abs_section_39d
      _PORTAB                                      0       2       2       0   .abs_section_0
      _DDRAB                                       2       2       2       0   .abs_section_2
-     _PORTCD                                      4       2       2       1   .abs_section_4
-     _DDRCD                                       6       2       2       1   .abs_section_6
+     _PORTCD                                      4       2       2       3   .abs_section_4
+     _DDRCD                                       6       2       2       3   .abs_section_6
      _PARTID                                     1A       2       2       0   .abs_section_1a
      _DBGTB                                      24       2       2       0   .abs_section_24
      _TCNT                                       44       2       2       0   .abs_section_44
@@ -2176,10 +2176,10 @@ OBJECT LIST SORTED BY ADDRESS
 ---------------------------------------------------------------------------------------------
      _PORTAB                                      0       2       2       0   .abs_section_0
      _DDRAB                                       2       2       2       0   .abs_section_2
-     _PORTCD                                      4       2       2       1   .abs_section_4
-     _DDRCD                                       6       2       2       1   .abs_section_6
-     _PORTE                                       8       1       1       1   .abs_section_8
-     _DDRE                                        9       1       1       1   .abs_section_9
+     _PORTCD                                      4       2       2       3   .abs_section_4
+     _DDRCD                                       6       2       2       3   .abs_section_6
+     _PORTE                                       8       1       1       0   .abs_section_8
+     _DDRE                                        9       1       1       0   .abs_section_9
      _MMCCTL0                                     A       1       1       0   .abs_section_a
      _MODE                                        B       1       1       0   .abs_section_b
      _PUCR                                        C       1       1       0   .abs_section_c
@@ -2211,8 +2211,8 @@ OBJECT LIST SORTED BY ADDRESS
      _DBGXDHM                                    2E       1       1       0   .abs_section_2e
      _DBGXDLM                                    2F       1       1       0   .abs_section_2f
      _PPAGE                                      30       1       1       0   .abs_section_30
-     _PORTK                                      32       1       1       1   .abs_section_32
-     _DDRK                                       33       1       1       1   .abs_section_33
+     _PORTK                                      32       1       1       0   .abs_section_32
+     _DDRK                                       33       1       1       0   .abs_section_33
      _SYNR                                       34       1       1       0   .abs_section_34
      _REFDV                                      35       1       1       0   .abs_section_35
      _CRGFLG                                     37       1       1       0   .abs_section_37
@@ -2742,8 +2742,7 @@ SPI_ReadByte              USES _PTS
 Flash_WaitBusy            USES _PTS SPI_WriteByte SPI_ReadByte 
 Flash_Read_ID             USES ISD_sendbuf Flash_WaitBusy _PTS SPI_WriteByte 
                                 SPI_ReadByte 
-Bootloader_Mode_Change    USES _DDRCD _PORTCD _DDRK _PORTK _DDRE _PORTE _DDRS 
-                                _PTS 
+Bootloader_Mode_Change    USES _DDRCD _PORTCD _DDRS _PTS 
 
 *********************************************************************************************
 DEPENDENCY TREE

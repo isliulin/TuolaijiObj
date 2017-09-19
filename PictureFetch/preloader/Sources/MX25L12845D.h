@@ -1,7 +1,7 @@
 #ifndef __MX25L12845D
 #define __MX25L12845D
 //#include <mc9s12xhz256.h>
-#include "type.h"
+#include "types.h"
 //#include "Flash.h"
 #include <hidef.h>      /* common defines and macros */
 #include "derivative.h"
@@ -38,14 +38,14 @@
 #define	ISD_CS		    				PTS_PTS7
 #define	ISD_CS_IO	  				DDRS_DDRS7 
 
-#define	V_5V_CTRL						PORTD_PD1
-#define	V_5V_CTRL_IO	   			DDRD_DDRD1 
+#define	V_5V_CTRL						PORTD_PD3
+#define	V_5V_CTRL_IO	   			DDRD_DDRD3 
 
-#define	DOWNLOAD_CTRL				PORTK_PK3
-#define	DOWNLOAD_CTRL_IO		DDRK_DDRK3
+#define	DOWNLOAD_CTRL				PORTD_PD1
+#define	DOWNLOAD_CTRL_IO		DDRD_DDRD1
 
-#define	MODE_CTRL						PORTE_PE4
-#define	MODE_CTRL_IO					DDRE_DDRE4
+#define	MODE_CTRL						PORTD_PD0
+#define	MODE_CTRL_IO					DDRD_DDRD0
 
 #define SCK_L() 	ISD_SCLK=0
 #define SCK_H() 	ISD_SCLK=1
