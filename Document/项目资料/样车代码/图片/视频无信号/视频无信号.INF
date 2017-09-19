@@ -1,0 +1,15 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset视频无信号 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 视频无信号[] = { 
+    { offset视频无信号+0x000000, 0x00A805 },    // 前门视频无信号 
+    { offset视频无信号+0x00A805, 0x00A7AD },    // 中门视频无信号 
+    { offset视频无信号+0x014FB2, 0x00A793 },    // 倒车视频无信号 
+    { offset视频无信号+0x01F745, 0x00A731 },    // 顶部视频无信号 
+}; 

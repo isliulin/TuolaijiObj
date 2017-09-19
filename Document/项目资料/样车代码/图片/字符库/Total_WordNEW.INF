@@ -1,0 +1,30 @@
+/****************************************************************/
+/*                      TW88xx RAM FONT                         */
+/****************************************************************/
+/* <FILE TYPE>=TW8804 */
+/* <NUMBER OF FONTS>=0x7C(124) */
+/* <FONT WIDTH>=16 */
+
+/* <FONT HEIGHT>=26 */
+
+/* <2bit COLOR START>=0x07C */
+
+/* <3bit COLOR START>=0x07C */
+
+/* <4bit COLOR START>=0x07C */
+
+/* <LOOK-UP TABLE 4 COLORS> */
+code unsigned char 16161616164[4] = {
+     {0x0000,0x001F,0xF800,0xFFFF
+};
+
+/* <LOOK-UP TABLE 8 COLORS> */
+code unsigned char 16161616168[8] = {
+     {0x0000,0x8000,0x0400,0x8400,0x0010,0x8010,0x0410,0xC618
+};
+
+/* <LOOK-UP TABLE 16 COLORS> */
+code unsigned char 161616161616[16] = {
+     {0x0000,0x8000,0x0400,0x8400,0x0010,0x8010,0x0410,0xC618,0xC6F8,0xA65E,0x4100,0x6100,0x8100,0xA100,0xC100,0xE100
+};
+

@@ -1,0 +1,24 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset仪表诊断内容 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 仪表诊断内容[] = { 
+    { offset仪表诊断内容+0x000000, 0x03AD90 },    // 仪表-1 
+    { offset仪表诊断内容+0x03AD90, 0x03AD90 },    // 仪表-2 
+    { offset仪表诊断内容+0x075B20, 0x03AD90 },    // 仪表-3 
+    { offset仪表诊断内容+0x0B08B0, 0x03AD90 },    // 前控-1 
+    { offset仪表诊断内容+0x0EB640, 0x03AD90 },    // 前控-2 
+    { offset仪表诊断内容+0x1263D0, 0x03AD90 },    // 前控-3 
+    { offset仪表诊断内容+0x161160, 0x03AD90 },    // 后控-1 
+    { offset仪表诊断内容+0x19BEF0, 0x03AD90 },    // 后控-2 
+    { offset仪表诊断内容+0x1D6C80, 0x03AD90 },    // 后控-3 
+    { offset仪表诊断内容+0x211A10, 0x03AD90 },    // 保险丝对应端口号 
+    { offset仪表诊断内容+0x24C7A0, 0x03AD90 },    // 配电-1 
+    { offset仪表诊断内容+0x287530, 0x03AD90 },    // 配电-2 
+    { offset仪表诊断内容+0x2C22C0, 0x03AD90 },    // 模块温度-内容 
+}; 

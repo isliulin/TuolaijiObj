@@ -1,0 +1,16 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offset参数设置点中 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE 参数设置点中[] = { 
+    { offset参数设置点中+0x000000, 0x009050 },    // 雨刮间歇点中 
+    { offset参数设置点中+0x009050, 0x009050 },    // 仪表背光点中 
+    { offset参数设置点中+0x0120A0, 0x009050 },    // 蜂鸣器音量点中 
+    { offset参数设置点中+0x01B0F0, 0x009050 },    // 时间日期点中 
+    { offset参数设置点中+0x024140, 0x009050 },    // 雨刮电流点中 
+}; 

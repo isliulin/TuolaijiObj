@@ -1,0 +1,3 @@
+---- __SEG_START_FLASH_ROUTINES Matches (2 in 1 files) ----
+S08_Flash.c (d:\2012_project\网关及底层程序\bootloader_drive(250k)\sources):extern char __SEG_START_FLASH_ROUTINES[];
+S08_Flash.c (d:\2012_project\网关及底层程序\bootloader_drive(250k)\sources):#define Start_Copy_In_RAM __SEG_START_FLASH_ROUTINES

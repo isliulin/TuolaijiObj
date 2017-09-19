@@ -1,0 +1,18 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER 视频无信号_H[] = { 
+    { 0x88, 0x82, 0x0171, 0x0085, 0x0000A3F5, 0x01, 0xFF },     // 前门视频无信号 
+    { 0x88, 0x82, 0x0171, 0x0085, 0x0000A39D, 0x01, 0xFF },     // 中门视频无信号 
+    { 0x88, 0x82, 0x0171, 0x0085, 0x0000A383, 0x01, 0xFF },     // 倒车视频无信号 
+    { 0x88, 0x82, 0x0171, 0x0085, 0x0000A321, 0x01, 0xFF },     // 顶部视频无信号 
+}; 

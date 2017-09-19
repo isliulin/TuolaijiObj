@@ -1,0 +1,7 @@
+---- FuelLevel_2sFlag Matches (6 in 3 files) ----
+BitMacros.h (d:\2013_project\上海申龙泰国车\上海申龙泰国车_drive\sources):#define	FuelLevel_2sFlag								_BitMacros7.Bits.bit2
+Common.c (d:\2013_project\上海申龙泰国车\上海申龙泰国车_drive\sources):		FuelLevel_2sFlag=1;
+SensorDeal.c (d:\2013_project\上海申龙泰国车\上海申龙泰国车_drive\sources):		if(FuelLevel_2sFlag==1)							///0.5s extract 1 time
+SensorDeal.c (d:\2013_project\上海申龙泰国车\上海申龙泰国车_drive\sources):			FuelLevel_2sFlag=0;
+SensorDeal.c (d:\2013_project\上海申龙泰国车\上海申龙泰国车_drive\sources):		if(FuelLevel_2sFlag==1)							///0.5s extract 1 time
+SensorDeal.c (d:\2013_project\上海申龙泰国车\上海申龙泰国车_drive\sources):			FuelLevel_2sFlag=0;

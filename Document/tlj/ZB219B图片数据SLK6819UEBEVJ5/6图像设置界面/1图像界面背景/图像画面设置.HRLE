@@ -1,0 +1,17 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER 图像画面设置_H[] = { 
+    { 0x88, 0x87, 0x0320, 0x01E0, 0x00012A09, 0x01, 0xFF },     // 图像画面设置背景 
+    { 0x88, 0x84, 0x0320, 0x0032, 0x00003D75, 0x01, 0xFF },     // 通道选择设置 
+    { 0x88, 0x83, 0x0320, 0x0032, 0x00003EBE, 0x01, 0xFF },     // 图像画面设置 
+}; 

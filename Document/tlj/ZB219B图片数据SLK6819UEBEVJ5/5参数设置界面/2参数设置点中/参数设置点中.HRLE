@@ -1,0 +1,19 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER 参数设置点中_H[] = { 
+    { 0x88, 0x00, 0x0220, 0x0042, 0x00008C40, 0x01, 0xFF },     // 雨刮间歇点中 
+    { 0x88, 0x00, 0x0220, 0x0042, 0x00008C40, 0x01, 0xFF },     // 仪表背光点中 
+    { 0x88, 0x00, 0x0220, 0x0042, 0x00008C40, 0x01, 0xFF },     // 蜂鸣器音量点中 
+    { 0x88, 0x00, 0x0220, 0x0042, 0x00008C40, 0x01, 0xFF },     // 时间日期点中 
+    { 0x88, 0x00, 0x0220, 0x0042, 0x00008C40, 0x01, 0xFF },     // 雨刮电流点中 
+}; 

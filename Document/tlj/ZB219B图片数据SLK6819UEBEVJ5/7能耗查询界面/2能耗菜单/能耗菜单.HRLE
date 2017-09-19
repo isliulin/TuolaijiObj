@@ -1,0 +1,20 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER 能耗菜单_H[] = { 
+    { 0x88, 0x00, 0x015B, 0x0048, 0x00006198, 0x01, 0xFF },     // 控制器信息菜单点中 
+    { 0x88, 0x00, 0x015B, 0x0048, 0x00006198, 0x01, 0xFF },     // BMS信息菜单点中 
+    { 0x88, 0x00, 0x015B, 0x0048, 0x00006198, 0x01, 0xFF },     // 单体电压点中 
+    { 0x88, 0x00, 0x015B, 0x0048, 0x00006198, 0x01, 0xFF },     // 单体温度点中 
+    { 0x88, 0x00, 0x015B, 0x0048, 0x00006198, 0x01, 0xFF },     // 绝缘监测信息菜单点中 
+    { 0x88, 0x00, 0x015B, 0x0048, 0x00006198, 0x01, 0xFF },     // 热管理机组菜单点中 
+}; 

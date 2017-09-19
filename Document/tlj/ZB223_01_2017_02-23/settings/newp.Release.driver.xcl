@@ -1,0 +1,19 @@
+"--endian=little" 
+
+"--cpu=Cortex-M4" 
+
+"--fpu=VFPv4_SP" 
+
+"-p" 
+
+"C:\Program Files\IAR Systems\Embedded Workbench 7.3\arm\config\debugger\Freescale\S32K144.ddf" 
+
+"--drv_verify_download" 
+
+"--semihosting=none" 
+
+"--device=S32K144" 
+
+
+
+

@@ -1,0 +1,16 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER 开机LOGO_H[] = { 
+    { 0x88, 0x8B, 0x0320, 0x01E0, 0x000014BF, 0x01, 0xFF },     // 电池外界充电 
+    { 0x88, 0x8B, 0x0320, 0x01E0, 0x00002132, 0x01, 0xFF },     // 开机LOGO 
+}; 

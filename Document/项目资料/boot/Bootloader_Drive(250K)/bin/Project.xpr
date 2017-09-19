@@ -1,0 +1,7 @@
+Data:1 < ADDXPR ONLY_ADD_IF_NEW "SelfID.C::Hc4051ChannelAdcData[1]"
+Data:2 < ADDXPR ONLY_ADD_IF_NEW ":StartStateDetect:Index"
+Data:2 < ADDXPR ONLY_ADD_IF_NEW "ReStop_Flash_Write_Addres"
+Data:2 < ADDXPR ONLY_ADD_IF_NEW "ReStart_Flash_Write_Addres"
+Data:2 < ADDXPR ONLY_ADD_IF_NEW "NormAdcData"
+Data:2 < ADDXPR ONLY_ADD_IF_NEW "DataNumber"
+Data:2 < ADDXPR ONLY_ADD_IF_NEW "Data0"

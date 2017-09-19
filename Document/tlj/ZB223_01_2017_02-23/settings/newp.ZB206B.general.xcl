@@ -1,0 +1,15 @@
+"D:\Program Files\IAR Systems\Embedded Workbench 7.3\arm\bin\armproc.dll" 
+
+"D:\Program Files\IAR Systems\Embedded Workbench 7.3\arm\bin\armpemicro.dll" 
+
+"F:\≈‰÷√»Ìº˛œ‡πÿ\ZB223_0A_bg_20161010\ZB223_01\ZB206B\Exe\c.out" 
+
+--plugin "D:\Program Files\IAR Systems\Embedded Workbench 7.3\arm\bin\armbat.dll" 
+
+--device_macro "D:\Program Files\IAR Systems\Embedded Workbench 7.3\arm\config\debugger\NXP\S32K.dmac" 
+
+--flash_loader "D:\Program Files\IAR Systems\Embedded Workbench 7.3\arm\config\flashloader\Freescale\FlashS32K144.board" 
+
+
+
+

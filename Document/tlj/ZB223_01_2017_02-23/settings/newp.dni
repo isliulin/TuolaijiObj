@@ -1,0 +1,215 @@
+[Stack]
+FillEnabled=0
+OverflowWarningsEnabled=1
+WarningThreshold=90
+SpWarningsEnabled=1
+WarnLogOnly=1
+UseTrigger=1
+TriggerName=main
+LimitSize=0
+ByteLimit=50
+[DebugChecksum]
+Checksum=-1488869901
+[PE_STARTUP]
+CPUTARGETTYPENAME=_ "ARM Processor - Autodetect"
+jtag_numbits_pre_ir=_ "0"
+jtag_tap_num=_ "0"
+jtag_use_daisy_chain=_ "0"
+user_specified_daisy_chain=_ "0"
+USE_CYCLONEPRO_RELAYS=_ "0"
+CyclonePro_poweroffonexit=_ "0"
+CyclonePro_currentvoltage=_ "128"
+CyclonePro_PowerDownDelay=_ "250"
+CyclonePro_PowerUpDelay=_ "250"
+Multilink_PowerDownDelay=_ "250"
+Multilink_PowerUpDelay=_ "1000"
+USE_SWD=_ "1"
+IO_DELAY_CNT=_ "1"
+FREQ_FX=_ "4"
+FREQ_NORMAL=_ "0"
+FREQ_OSJTAG=_ "0"
+FREQ_CYCLONE=_ "3"
+FREQ_TRACELINK=_ "3"
+FREQ_LIGHTNING=_ "1"
+FREQ_OPENSDA=_ "0"
+RESET_DELAY=_ "0"
+PORT=_ "21"
+PORT_NAME_STRING=_ "PEMFC6063"
+interface_selection=_ "1"
+SHOWDIALOG=_ "1"
+TraceLink_MaxBufferSize=_ "1"
+[PE_STORED_DEVICES]
+device0=_ "Freescale_S32K1xx_S32K144F512M15"
+[PE_PEDEBUG]
+CURRENTDEVICE=_ "Freescale_S32K1xx_S32K144F512M15"
+ERASE_PROGRAM_WITHOUT_ASKING=_ "1"
+CURRENTMODE=_ "4"
+[PE_DEVICE]
+CHIPMODE=_ "Freescale_S32K1xx_S32K144F512M15"
+[Exceptions]
+StopOnUncaught=_ 0
+StopOnThrow=_ 0
+[CallStack]
+ShowArgs=0
+[Disassembly]
+MixedMode=1
+[PE_SETTINGS]
+MEMORYSTART1=_ "0"
+MEMORYSTART2=_ "0"
+MEMORYSTART3=_ "0"
+DEFAULT_SOURCE_PATH=_ "D:\Program Files\IAR Systems\Embedded Workbench 7.3\arm\bin\pemicro\P&E"
+[PE_STARTUP12]
+show_hstep_assembly_details=_ "1"
+[PE_ARM]
+FILE1=_ ""
+BINTORAM=_ "1"
+BINTOFLASH=_ "0"
+BINTOFLASHDEFAULT=_ "0"
+GOTILMAIN=_ "0"
+KEEPCPROGOPEN=_ "0"
+[InterruptLog]
+LogEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+SumEnabled=0
+ShowTimeSum=1
+SumSortOrder=0
+[DataLog]
+LogEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+SumEnabled=0
+ShowTimeSum=1
+[Interrupts]
+Enabled=1
+[MemConfig]
+Base=1
+Manual=0
+Ddf=1
+TypeViol=0
+Stop=1
+[Trace1]
+Enabled=0
+ShowSource=1
+[Simulator]
+Freq=10000000
+MultiCoreRunAll=1
+[RecentFlashDownload]
+Path=E:\lin\ZB223\1_p\底层\ZB223BYY00_BootLoader\build\Debug\Exe\zb223bootloader.out
+[JLinkDriver]
+CStepIntDis=_ 0
+TraceBufferSize=0x00010000
+TraceStallIfFIFOFull=0x00000000
+TracePortSize=0x00000000
+[Breakpoints2]
+Count=0
+[struct_types]
+Fmt0=CAN_PACKET_T-byte_count	4	0
+Fmt1=CAN_PACKET_T-identifier	4	0
+Fmt2=ID_Time_INFO-dstIdentifier	4	0
+Fmt3=STRUCT_SYS_CONFIG-CarSpeedSrc	4	0
+Fmt4=STRUCT_SYS_CONFIG-CycleCaptureNum	3	0
+Fmt5=STRUCT_SYS_CONFIG-EngCarSpeedSrc	4	0
+Fmt6=STRUCT_SYS_CONFIG-ModuleConfig	4	0
+Fmt7=STRUCT_SYS_CONFIG-engSpeedChanelIndex	4	0
+Fmt8=STRUCT_SYS_CONFIG-speedChanelIndex	4	0
+[array_types]
+Fmt0=uchar[8]	4	0
+Fmt1=uint8[8]	4	0
+Fmt2=uint8_t[10]	4	0
+Fmt3=uint8_t[16]	4	0
+Fmt4=uint8_t[5]	4	0
+Fmt5=unsigned char[10]	4	0
+Fmt6=unsigned char[14]	4	0
+Fmt7=unsigned char[1700]	4	0
+Fmt8=unsigned char[196]	4	0
+Fmt9=unsigned char[200]	4	0
+Fmt10=unsigned char[20]	4	0
+Fmt11=unsigned char[21]	4	0
+Fmt12=unsigned char[2]	4	0
+Fmt13=unsigned char[3]	4	0
+Fmt14=unsigned char[40]	3	0
+Fmt15=unsigned char[4]	4	0
+Fmt16=unsigned char[50]	3	0
+Fmt17=unsigned char[5]	4	0
+Fmt18=unsigned char[6]	4	0
+Fmt19=unsigned char[7]	4	0
+Fmt20=unsigned char[8]	4	0
+Fmt21=unsigned short[26]	4	0
+[watch_formats]
+Fmt0={W}1:0x00008024	1	0
+Fmt1={W}1:0x00008822	1	0
+Fmt2={W}1:0x400FF000u	4	0
+Fmt3={W}1:FTM3_MYCNT	4	0
+Fmt4={W}1:GPIOB_PDDR	4	0
+Fmt5={W}1:ID_Code	4	0
+Fmt6={W}1:IS_id	4	0
+Fmt7={W}1:PORTA_PCR11	4	0
+Fmt8={W}1:SensorAdcValue	0	2
+Fmt9={W}1:__VECTOR_RAM	4	0
+Fmt10={W}1:aa	4	0
+Fmt11={W}1:cv	4	0
+Fmt12={W}1:engineSpeed	4	0
+Fmt13={W}1:final2	4	0
+Fmt14={W}1:final3	4	0
+Fmt15={W}1:final4	4	0
+Fmt16={W}1:j	4	0
+Fmt17={W}1:ledStBit	1	0
+Fmt18={W}1:pulseCnt	4	0
+Fmt19={W}1:rxMsgID	4	0
+Fmt20={W}1:status	4	0
+Fmt21={W}1:x32	4	0
+Fmt22={W}2:pgn	4	0
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
+[Disassemble mode]
+mode=0
+[Breakpoints]
+Bp0=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160705}.950.8" 0 0 0 0 "" 0 "" 0
+Bp1=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160705}.724.2" 0 0 0 0 "" 0 "" 0
+Bp2=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603}.342.4" 0 0 0 0 "" 0 "" 0
+Bp3=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603}.3470.10" 0 0 0 0 "" 0 "" 0
+Bp4=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160705}.1100.8" 0 0 0 0 "" 0 "" 0
+Bp5=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603}.146.30" 0 0 0 0 "" 0 "" 0
+Bp6=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603}.4059.9" 0 0 0 0 "" 0 "" 0
+Bp7=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603}.2807.6" 0 0 0 0 "" 0 "" 0
+Bp8=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160705}.2807.6" 0 0 0 0 "" 0 "" 0
+Bp9=_ "STD_CODE" "{$PROJ_DIR$\function\display.c}.3527.9" 0 0 0 0 "" 0 "" 0
+Bp10=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160705}.1755.1" 0 0 0 0 "" 0 "" 0
+Bp11=_ "STD_CODE" "{$PROJ_DIR$\function\load_deal.c}.1468.5" 0 0 0 0 "" 0 "" 0
+Bp12=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160705}.329.2" 0 0 0 0 "" 0 "" 0
+Bp13=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160705}.119.8" 0 0 0 0 "" 0 "" 0
+Bp14=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160705}.6.3" 0 0 0 0 "" 0 "" 0
+Bp15=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160705}.128.2" 0 0 0 0 "" 0 "" 0
+Bp16=_ "STD_CODE" "{E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160705}.1140.3" 0 0 0 0 "" 0 "" 0
+Bp17=_ "STD_CODE" "{$PROJ_DIR$\function\display.c}.3527.9" 0 0 0 0 "" 0 "" 0
+Bp18=_ "STD_CODE" "{$PROJ_DIR$\S32K144_Module\ap_S32K1xx_LPSPI.c}.36.2" 0 0 0 0 "" 0 "" 0
+Bp19=_ "STD_CODE" "{$PROJ_DIR$\function\LcmDisp.c}.44.1" 0 0 0 0 "" 0 "" 0
+Bp20=_ "STD_CODE" "{$PROJ_DIR$\function\ISR.C}.443.2" 1 0 0 0 "" 0 "" 0
+Bp21=_ "STD_CODE" "{$PROJ_DIR$\function\load_deal.c}.277.6" 1 0 0 0 "" 0 "" 0
+Bp22=_ "STD_CODE" "{$PROJ_DIR$\function\sensor.c}.207.5" 0 0 0 0 "" 0 "" 0
+Count=23
+[Aliases]
+A0=_ "C:\Users\ap\Desktop\ZB223_0803\ZB223_01_20160817\ZB223_01_20160902\ZB223_01\S32K144_Module\ap_S32K1xx_adc.c" ""
+A1=_ "C:\Users\lin\Desktop\ZB223_01_20160705\ZB223_01\S32K144_Module\ap_S32K1xx_FlexCAN.c" ""
+A2=_ "C:\Users\lin\Desktop\ZB223_01_20160705\ZB223_01\patch\ButtonPatch.c" ""
+A3=_ "C:\Users\lin\Desktop\ZB223_20160513\newp\S32K144_Module\ap_S32K1xx_FlexCAN.c" ""
+A4=_ "C:\Users\lin\Desktop\ZB223_20160513\newp\S32K144_Module\ap_S32K1xx_adc.c" ""
+A5=_ "C:\Users\lin\Desktop\ZB223_20160513\newp\S32K144_Module\ap_S32K1xx_lptmr.c" ""
+A6=_ "E:\lin\NEWP\p\iar\newp_20160224对齐是否对buffer地址强制转换带来影响测试\newp\core\arm_cortex_M4\arm_cm4.c" ""
+A7=_ "E:\lin\NEWP\p\iar\newp_20160224对齐是否对buffer地址强制转换带来影响测试\newp\core\startup\startup.c" ""
+A8=_ "E:\lin\NEWP\p\iar\newp_20160225\newp\core\arm_cortex_M4\arm_cm4.c" ""
+A9=_ "E:\lin\NEWP\p\iar\newp_20160225\newp\core\startup\startup.c" ""
+A10=_ "E:\lin\NEWP\p\iar\newp_20160225\newp\function\StepDeal.c" ""
+A11=_ "E:\lin\NEWP\p\iar\newp_20160330编译器优化\newp_20160311\newp\src\main.c" ""
+A12=_ "E:\lin\ZB223\1_p\ZB223_01_20160603\ZB223_01_20160530\ZB223_01\S32K144_Module\ap_lpit.c" ""
+A13=_ "E:\lin\ZB223\1_p\ZB223_20160519\newp\S32K144_Module\ap_S32K1xx_FlexCAN.c" ""
+A14=_ "E:\lin\ZB223\1_p\ZB223_20160519\newp\S32K144_Module\ap_S32K1xx_adc.c" ""
+A15=_ "E:\lin\ZB223\p\ZB223_20160503\newp\core\startup\startup.c" ""
+Count=16
+SuppressDialog=1

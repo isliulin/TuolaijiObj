@@ -1,0 +1,5 @@
+Record=SheetSymbol|SourceDocument=SCH-ZB206B-0B.SchDoc|Designator=U_01 Mcu|SchDesignator=U_01 Mcu|FileName=01 Mcu.SchDoc|SymbolType=Normal|RawFileName=01 Mcu.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol
+Record=SheetSymbol|SourceDocument=SCH-ZB206B-0B.SchDoc|Designator=U_02 TFT&LED|SchDesignator=U_02 TFT&LED|FileName=02 TFT&LED.SchDoc|SymbolType=Normal|RawFileName=02 TFT&LED.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol
+Record=SheetSymbol|SourceDocument=SCH-ZB206B-0B.SchDoc|Designator=U_03 Meter&Pwm&KEY|SchDesignator=U_03 Meter&Pwm&KEY|FileName=03 Meter&Pwm&KEY.SchDoc|SymbolType=Normal|RawFileName=03 Meter&Pwm&KEY.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol
+Record=SheetSymbol|SourceDocument=SCH-ZB206B-0B.SchDoc|Designator=U_04 Switch|SchDesignator=U_04 Switch|FileName=04 Switch.SchDoc|SymbolType=Normal|RawFileName=04 Switch.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol
+Record=TopLevelDocument|FileName=SCH-ZB206B-0B.SchDoc

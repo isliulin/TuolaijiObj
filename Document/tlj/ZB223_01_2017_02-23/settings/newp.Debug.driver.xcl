@@ -1,0 +1,21 @@
+"--endian=little" 
+
+"--cpu=Cortex-M4" 
+
+"--fpu=VFPv4_SP" 
+
+"-p" 
+
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.3\arm\config\debugger\Freescale\S32K144.ddf" 
+
+"--drv_verify_download" 
+
+"--semihosting" 
+
+"--device=S32K144" 
+
+"--drv_communication_log=C:\Users\lin\Desktop\ZB223_01_20160816\ZB223_01_20160705\ZB223_01\cspycomm.log" 
+
+
+
+

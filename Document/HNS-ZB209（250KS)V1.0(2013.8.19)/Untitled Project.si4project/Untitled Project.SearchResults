@@ -1,0 +1,5 @@
+---- Bootloader_Mode_Change Matches (4 in 4 files) ----
+CAN0_ReadFrame in can0.c (Sources) : 						Bootloader_Mode_Change();///为图片FLASH准备				
+BootloadDeal in main.c (Sources) : 		Bootloader_Mode_Change();///为图片FLASH准备
+MX25L12845D.c (Sources) line 333 : void	Bootloader_Mode_Change(void)
+MX25L12845D.h (Sources) line 60 : void	Bootloader_Mode_Change(void);

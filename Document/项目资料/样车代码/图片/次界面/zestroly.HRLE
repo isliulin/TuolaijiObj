@@ -1,0 +1,20 @@
+// *********** Combined file RLE Header information ***********
+ 
+// typedef struct {    
+//     unsigned char op_bmpbits;   
+//     unsigned char rledata_cnt;    
+//     short w;   
+//     short h;    
+//     DWORD size;   
+//     unsigned char LUT_format;    
+//     unsigned char LUT_colors;    
+// } RLE2_HEADER;       
+
+FAR CONST RLE2_HEADER zestroly_H[] = { 
+    { 0x88, 0x87, 0x0320, 0x01E0, 0x000108C2, 0x01, 0xFF },     // …œ∫£…Í¡˙ ∏±±æ 
+    { 0x88, 0x84, 0x0320, 0x01E0, 0x00021010, 0x01, 0xFF },     // ≤Àµ•-Ã©Œƒ 
+    { 0x88, 0x87, 0x0320, 0x01E0, 0x0000C30A, 0x01, 0xFF },     // Ã•—π—ßœ∞--√‹¬Î 
+    { 0x88, 0x87, 0x015F, 0x0039, 0x00000D04, 0x01, 0xFF },     // Ã•—π—ßœ∞-√‹¬Î¥ÌŒÛ 
+    { 0x88, 0x86, 0x0118, 0x0032, 0x00000BC0, 0x01, 0xFF },     // √‹¬Î¥ÌŒÛ 
+    { 0x88, 0x87, 0x0320, 0x01E0, 0x0000C6EB, 0x01, 0xFF },     // Ã•—π—ßœ∞√‹¬Î 
+}; 
