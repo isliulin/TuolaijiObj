@@ -38,6 +38,8 @@
 #define	ISD_CS		    				PTS_PTS7
 #define	ISD_CS_IO	  				DDRS_DDRS7 
 
+#define   HNS206
+#ifdef HNS206
 #define	V_5V_CTRL						PORTD_PD3
 #define	V_5V_CTRL_IO	   			DDRD_DDRD3 
 
@@ -45,7 +47,21 @@
 #define	DOWNLOAD_CTRL_IO		DDRD_DDRD1
 
 #define	MODE_CTRL						PORTD_PD0
+#define	MODE_CTRL_IO					DDRD_DDRD4
+
+#else
+ #if 0
+#define	V_5V_CTRL						PORTD_PD2
+#define	V_5V_CTRL_IO	   			DDRD_DDRD2 
+
+#define	DOWNLOAD_CTRL				PORTD_PD1
+#define	DOWNLOAD_CTRL_IO		DDRD_DDRD1
+
+#define	MODE_CTRL						PORTD_PD0
 #define	MODE_CTRL_IO					DDRD_DDRD0
+  #endif
+#endif
+
 
 #define SCK_L() 	ISD_SCLK=0
 #define SCK_H() 	ISD_SCLK=1
@@ -65,6 +81,7 @@
 #define	FLASH_FAST_READ				0X0b
 #define	FLASH_ID_READ					0X9F
 #define	FLASH_READ_STATAS			0X05
+#define FLASH_CMD_READ        0x03
 ///////////////////////////////////////////////////////////////////////////////////////
 uchar Flash_Read_ID(void) ; 
 uchar Erase_Sector(uint Sector_Number)  ;

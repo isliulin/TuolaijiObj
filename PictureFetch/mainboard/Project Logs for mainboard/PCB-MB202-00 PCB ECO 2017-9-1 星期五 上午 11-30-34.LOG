@@ -1,0 +1,15 @@
+Added Component: Designator=RP4(R4)
+Added Pin To Net: NetName=GND Pin=RP4-1
+Added Pin To Net: NetName=GND Pin=RP4-2
+Added Pin To Net: NetName=GND Pin=RP4-3
+Added Pin To Net: NetName=GND Pin=RP4-4
+Added Pin To Net: NetName=NetRP4_6 Pin=RP4-6
+Added Pin To Net: NetName=NetRP4_6 Pin=U10-5
+Added Net: Name=NetRP4_6
+Added Pin To Net: NetName=NetRP4_7 Pin=RP4-7
+Added Pin To Net: NetName=NetRP4_7 Pin=U10-4
+Added Net: Name=NetRP4_7
+Added Pin To Net: NetName=NetRP4_8 Pin=RP4-8
+Added Pin To Net: NetName=NetRP4_8 Pin=U10-3
+Added Net: Name=NetRP4_8
+Added Member To Class: ClassName=U_01 MCU Member=Component RP4 472*4

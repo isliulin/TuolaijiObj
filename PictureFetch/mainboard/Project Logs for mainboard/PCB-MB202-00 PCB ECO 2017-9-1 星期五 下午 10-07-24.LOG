@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=SW104 Pin=DZ9-3
+Removed Pin From Net: NetName=SW105 Pin=DZ9-4
+Removed Pin From Net: NetName=SW106 Pin=DZ9-6
+Added Pin To Net: NetName=SW106 Pin=DZ9-1
+Added Pin To Net: NetName=SW105 Pin=DZ9-3
+Added Pin To Net: NetName=SW104 Pin=DZ9-4

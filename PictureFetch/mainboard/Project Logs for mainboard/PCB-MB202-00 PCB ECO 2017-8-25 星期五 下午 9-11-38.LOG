@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=SEND_DATA1 Pin=U10-100
+Removed Pin From Net: NetName=V-POW1 Pin=U10-101
+Removed Pin From Net: NetName=V-POW2 Pin=U10-102
+Removed Pin From Net: NetName=AN-12V Pin=U10-103
+Removed Pin From Net: NetName=CLOCK_M1 Pin=U10-105
+Removed Pin From Net: NetName=OE Pin=U10-106
+Added Pin To Net: NetName=V-POW1 Pin=U10-100
+Added Pin To Net: NetName=V-POW2 Pin=U10-101
+Added Pin To Net: NetName=AN-12V Pin=U10-102
+Added Pin To Net: NetName=CLOCK_M1 Pin=U10-103
+Added Pin To Net: NetName=OE Pin=U10-105
+Added Pin To Net: NetName=SEND_DATA1 Pin=U10-106

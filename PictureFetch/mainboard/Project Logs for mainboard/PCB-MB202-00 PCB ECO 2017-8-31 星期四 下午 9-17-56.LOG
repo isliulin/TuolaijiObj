@@ -1,0 +1,26 @@
+Change Component Designator: OldDesignator=RP? NewDesignator=RP1
+Change Component Designator: OldDesignator=RP? NewDesignator=RP2
+Added Pin To Net: NetName=GND Pin=RP2-1
+Added Pin To Net: NetName=GND Pin=RP2-2
+Added Pin To Net: NetName=GND Pin=RP2-3
+Added Pin To Net: NetName=GND Pin=RP2-4
+Change Net Name : Old Net Name=NetRP?_8 New Net Name=NetRP1_8
+Added Pin To Net: NetName=NetRP1_5 Pin=RP1-5
+Added Pin To Net: NetName=NetRP1_5 Pin=U10-138
+Added Net: Name=NetRP1_5
+Added Pin To Net: NetName=NetRP1_6 Pin=RP1-6
+Added Pin To Net: NetName=NetRP1_6 Pin=U10-137
+Added Net: Name=NetRP1_6
+Added Pin To Net: NetName=NetRP1_7 Pin=RP1-7
+Added Pin To Net: NetName=NetRP1_7 Pin=U10-136
+Added Net: Name=NetRP1_7
+Added Pin To Net: NetName=NetRP2_5 Pin=RP2-5
+Added Pin To Net: NetName=NetRP2_5 Pin=U10-134
+Added Net: Name=NetRP2_5
+Added Pin To Net: NetName=NetRP2_6 Pin=RP2-6
+Added Pin To Net: NetName=NetRP2_6 Pin=U10-133
+Added Net: Name=NetRP2_6
+Added Pin To Net: NetName=NetRP2_7 Pin=RP2-7
+Added Pin To Net: NetName=NetRP2_7 Pin=U10-130
+Added Net: Name=NetRP2_7
+Added Member To Class: ClassName=U_01 MCU Member=Component RP1 472*4

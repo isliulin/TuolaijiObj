@@ -1,0 +1,49 @@
+Change Component Designator: OldDesignator=RP? NewDesignator=RP1
+Change Component Designator: OldDesignator=RP? NewDesignator=RP2
+Change Component Designator: OldDesignator=RP? NewDesignator=RP4
+Change Component Designator: OldDesignator=RP? NewDesignator=RP7
+Added Pin To Net: NetName=GND Pin=RP2-1
+Added Pin To Net: NetName=GND Pin=RP2-2
+Added Pin To Net: NetName=GND Pin=RP2-3
+Added Pin To Net: NetName=GND Pin=RP2-4
+Added Pin To Net: NetName=GND Pin=RP4-1
+Added Pin To Net: NetName=GND Pin=RP4-2
+Added Pin To Net: NetName=GND Pin=RP4-3
+Added Pin To Net: NetName=GND Pin=RP4-4
+Change Net Name : Old Net Name=NetRP?_5 New Net Name=NetRP7_5
+Change Net Name : Old Net Name=NetRP?_6 New Net Name=NetRP7_6
+Change Net Name : Old Net Name=NetRP?_7 New Net Name=NetRP7_7
+Change Net Name : Old Net Name=NetRP?_8 New Net Name=NetRP7_8
+Added Pin To Net: NetName=NetRP1_5 Pin=RP1-5
+Added Pin To Net: NetName=NetRP1_5 Pin=U10-138
+Added Net: Name=NetRP1_5
+Added Pin To Net: NetName=NetRP1_6 Pin=RP1-6
+Added Pin To Net: NetName=NetRP1_6 Pin=U10-137
+Added Net: Name=NetRP1_6
+Added Pin To Net: NetName=NetRP1_7 Pin=RP1-7
+Added Pin To Net: NetName=NetRP1_7 Pin=U10-136
+Added Net: Name=NetRP1_7
+Added Pin To Net: NetName=NetRP1_8 Pin=RP1-8
+Added Pin To Net: NetName=NetRP1_8 Pin=U10-135
+Added Net: Name=NetRP1_8
+Added Pin To Net: NetName=NetRP2_5 Pin=RP2-5
+Added Pin To Net: NetName=NetRP2_5 Pin=U10-134
+Added Net: Name=NetRP2_5
+Added Pin To Net: NetName=NetRP2_6 Pin=RP2-6
+Added Pin To Net: NetName=NetRP2_6 Pin=U10-133
+Added Net: Name=NetRP2_6
+Added Pin To Net: NetName=NetRP2_7 Pin=RP2-7
+Added Pin To Net: NetName=NetRP2_7 Pin=U10-130
+Added Net: Name=NetRP2_7
+Added Pin To Net: NetName=NetRP4_6 Pin=RP4-6
+Added Pin To Net: NetName=NetRP4_6 Pin=U10-5
+Added Net: Name=NetRP4_6
+Added Pin To Net: NetName=NetRP4_7 Pin=RP4-7
+Added Pin To Net: NetName=NetRP4_7 Pin=U10-4
+Added Net: Name=NetRP4_7
+Added Pin To Net: NetName=NetRP4_8 Pin=RP4-8
+Added Pin To Net: NetName=NetRP4_8 Pin=U10-3
+Added Net: Name=NetRP4_8
+Added Member To Class: ClassName=U_01 MCU Member=Component RP1 103*4
+Added Member To Class: ClassName=U_01 MCU Member=Component RP2 103*4
+Added Member To Class: ClassName=U_01 MCU Member=Component RP4 103*4

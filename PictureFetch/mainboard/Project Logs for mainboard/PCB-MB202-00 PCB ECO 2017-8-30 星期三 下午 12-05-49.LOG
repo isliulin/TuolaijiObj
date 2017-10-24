@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=GND Pin=RP13-1
+Removed Pin From Net: NetName=GND Pin=RP13-2
+Removed Pin From Net: NetName=GND Pin=RP13-3
+Removed Pin From Net: NetName=GND Pin=RP13-4
+Removed Pin From Net: NetName=DA2 Pin=U10-2
+Removed Pin From Net: NetName=DB2 Pin=U10-3
+Removed Pin From Net: NetName=DC2 Pin=U10-4
+Removed Pin From Net: NetName=ADC2 Pin=U10-81
+Removed Member From Class: ClassName=U_01 MCU Member=RP13
+Added Pin To Net: NetName=ADC2 Pin=U10-2
+Added Pin To Net: NetName=DA2 Pin=U10-142
+Added Pin To Net: NetName=DB2 Pin=U10-143
+Added Pin To Net: NetName=DC2 Pin=U10-144

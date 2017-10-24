@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=+5VM Pin=UART-4
+Added Component: Designator=L5(CR0805)
+Added Pin To Net: NetName=+5VM Pin=L5-2
+Added Pin To Net: NetName=NetL5_1 Pin=L5-1
+Added Pin To Net: NetName=NetL5_1 Pin=UART-4
+Added Net: Name=NetL5_1
+Added Member To Class: ClassName=U_01 MCU Member=Component L5 BEAT

@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=GND Pin=C35-1
+Removed Pin From Net: NetName=GND Pin=C38-2
+Removed Pin From Net: NetName=GND Pin=DZ9-2
+Removed Pin From Net: NetName=+5VM Pin=R31-2
+Removed Pin From Net: NetName=+5VM Pin=R42-2
+Removed Pin From Net: NetName=GND Pin=SW5-2
+Removed Pin From Net: NetName=GND Pin=SW5-2
+Removed Pin From Net: NetName=GND Pin=SW6-2
+Removed Pin From Net: NetName=GND Pin=SW6-2
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=C35
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=C38
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=DZ9
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R31
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R42
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=SW5
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=SW6

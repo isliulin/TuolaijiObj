@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=+B Pin=D9-1
+Removed Member From Class: ClassName=U_02 TFT&LED Member=D9
+Added Component: Designator=R125(CR0805)
+Added Pin To Net: NetName=V Pin=C14-2
+Added Pin To Net: NetName=V Pin=C108-2
+Added Pin To Net: NetName=V Pin=C300-2
+Added Pin To Net: NetName=V Pin=L1-1
+Added Pin To Net: NetName=NetC46_1 Pin=R125-1
+Added Pin To Net: NetName=V1 Pin=R125-2
+Added Member To Class: ClassName=U_04 SWITCH Member=Component R125 47K
+Added Room: Name=U_01 MCU
+Added Room: Name=U_02 TFT&LED
+Added Room: Name=U_03 METER&PWM&KEY
+Added Room: Name=U_04 SWITCH

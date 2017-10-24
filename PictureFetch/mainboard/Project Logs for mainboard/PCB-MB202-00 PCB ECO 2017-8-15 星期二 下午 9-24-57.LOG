@@ -1,0 +1,22 @@
+Added Component: Designator=CE1(CR1206)
+Added Component: Designator=CE2(CR1206)
+Added Component: Designator=CE3(CR1206)
+Added Component: Designator=CE4(CR1206)
+Added Component: Designator=CE5(CR1206)
+Added Component: Designator=LOGO(LOGO)
+Added Pin To Net: NetName=+5V Pin=CE1-1
+Added Pin To Net: NetName=GND Pin=CE1-2
+Added Pin To Net: NetName=+5V Pin=CE2-1
+Added Pin To Net: NetName=GND Pin=CE2-2
+Added Pin To Net: NetName=+5V Pin=CE3-1
+Added Pin To Net: NetName=GND Pin=CE3-2
+Added Pin To Net: NetName=+5V Pin=CE4-1
+Added Pin To Net: NetName=GND Pin=CE4-2
+Added Pin To Net: NetName=+5V Pin=CE5-1
+Added Pin To Net: NetName=GND Pin=CE5-2
+Added Member To Class: ClassName=U_02 TFT&LED Member=Component CE1 10uF/50V
+Added Member To Class: ClassName=U_02 TFT&LED Member=Component CE2 10uF/50V
+Added Member To Class: ClassName=U_02 TFT&LED Member=Component CE3 10uF/50V
+Added Member To Class: ClassName=U_02 TFT&LED Member=Component CE4 10uF/50V
+Added Member To Class: ClassName=U_02 TFT&LED Member=Component CE5 10uF/50V
+Added Member To Class: ClassName=U_02 TFT&LED Member=Component LOGO TP

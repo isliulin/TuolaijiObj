@@ -6,8 +6,14 @@
 
 void Xmodule_init(void) {
  SCI0_Init();  
+// SCI1_Init();
 }
-
+	void delay2(uint us) {
+	  uint i;
+	  for(i=0; i< us; i++) {
+	   asm nop; 
+	  }  
+	}
 
 void XmodemWaitStart(void) {
   unsigned long  timercount = 0; 
@@ -15,7 +21,9 @@ void XmodemWaitStart(void) {
     if(++timercount > 10000)//wait about 1 second
     {
       SCI0_Send(XMODEM_RECIEVING_WAIT_CHAR);//send a "C"
+      delay2(2000);
       timercount=0;
+      
      }            
    }
 }

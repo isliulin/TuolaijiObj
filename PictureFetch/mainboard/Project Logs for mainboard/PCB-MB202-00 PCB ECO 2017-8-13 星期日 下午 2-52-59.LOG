@@ -1,0 +1,24 @@
+Removed Pin From Net: NetName=LCD-PWM Pin=TP6-1
+Removed Pin From Net: NetName=YIN1 Pin=TP14-1
+Removed Pin From Net: NetName=NetJ2_2 Pin=TP20-1
+Removed Pin From Net: NetName=NetJ2_3 Pin=TP21-1
+Removed Pin From Net: NetName=NetJ2_4 Pin=TP22-1
+Removed Pin From Net: NetName=NetJ2_5 Pin=TP23-1
+Removed Pin From Net: NetName=NetJ2_6 Pin=TP24-1
+Removed Pin From Net: NetName=NetJ2_7 Pin=TP25-1
+Removed Pin From Net: NetName=NetJ2_8 Pin=TP26-1
+Removed Pin From Net: NetName=NetJ2_9 Pin=TP27-1
+Removed Member From Class: ClassName=U_01 MCU Member=TP6
+Removed Member From Class: ClassName=U_01 MCU Member=TP14
+Removed Member From Class: ClassName=U_01 MCU Member=TP15
+Removed Member From Class: ClassName=U_01 MCU Member=TP20
+Removed Member From Class: ClassName=U_01 MCU Member=TP21
+Removed Member From Class: ClassName=U_01 MCU Member=TP22
+Removed Member From Class: ClassName=U_01 MCU Member=TP23
+Removed Member From Class: ClassName=U_01 MCU Member=TP24
+Removed Member From Class: ClassName=U_01 MCU Member=TP25
+Removed Member From Class: ClassName=U_01 MCU Member=TP26
+Removed Member From Class: ClassName=U_01 MCU Member=TP27
+Added Component: Designator=TP60(TP)
+Added Pin To Net: NetName=+12V-1 Pin=TP60-1
+Added Member To Class: ClassName=U_02 TFT&LED Member=Component TP60 

@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=LED_BK Pin=U10-35
+Removed Pin From Net: NetName=BELL Pin=U10-36
+Removed Pin From Net: NetName=DC3 Pin=U10-46
+Removed Pin From Net: NetName=DB3 Pin=U10-47
+Removed Pin From Net: NetName=DA3 Pin=U10-48
+Added Pin To Net: NetName=LED_BK Pin=U10-17
+Added Pin To Net: NetName=DC3 Pin=U10-35
+Added Pin To Net: NetName=DB3 Pin=U10-36
+Added Pin To Net: NetName=DA3 Pin=U10-37
+Added Pin To Net: NetName=BELL Pin=U10-108

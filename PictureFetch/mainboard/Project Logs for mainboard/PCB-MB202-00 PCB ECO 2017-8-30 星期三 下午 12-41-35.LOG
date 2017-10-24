@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=SEND_DATA2 Pin=U10-88
+Removed Pin From Net: NetName=DA1 Pin=U10-109
+Removed Pin From Net: NetName=DB1 Pin=U10-110
+Removed Pin From Net: NetName=DC1 Pin=U10-111
+Removed Pin From Net: NetName=BELL Pin=U10-112
+Removed Pin From Net: NetName=SDA_TW8835 Pin=U10-140
+Removed Pin From Net: NetName=SCL_TW8835 Pin=U10-141
+Added Pin To Net: NetName=SDA_TW8835 Pin=U10-87
+Added Pin To Net: NetName=SCL_TW8835 Pin=U10-88
+Added Pin To Net: NetName=DA1 Pin=U10-112
+Added Pin To Net: NetName=DB1 Pin=U10-113
+Added Pin To Net: NetName=DC1 Pin=U10-114
+Added Pin To Net: NetName=SEND_DATA2 Pin=U10-115
+Added Pin To Net: NetName=BELL Pin=U10-116

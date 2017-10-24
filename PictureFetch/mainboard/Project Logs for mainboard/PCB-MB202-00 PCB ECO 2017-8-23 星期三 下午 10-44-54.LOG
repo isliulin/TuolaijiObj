@@ -1,0 +1,8 @@
+Added Pin To Net: NetName=RXD0 Pin=JV_COMM-2
+Added Pin To Net: NetName=RXD0 Pin=R43-1
+Added Pin To Net: NetName=RXD0 Pin=U10-45
+Added Net: Name=RXD0
+Added Pin To Net: NetName=TXD0 Pin=JV_COMM-3
+Added Pin To Net: NetName=TXD0 Pin=R23-1
+Added Pin To Net: NetName=TXD0 Pin=U10-46
+Added Net: Name=TXD0

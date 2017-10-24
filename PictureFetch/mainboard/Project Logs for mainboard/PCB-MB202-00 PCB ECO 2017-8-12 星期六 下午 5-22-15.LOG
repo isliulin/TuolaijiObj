@@ -1,0 +1,26 @@
+Removed Pin From Net: NetName=PWM2 Pin=D1-1
+Removed Pin From Net: NetName=AD29 Pin=D34-1
+Removed Pin From Net: NetName=GND Pin=D34-2
+Removed Pin From Net: NetName=GND Pin=Q1-2
+Removed Pin From Net: NetName=+12V-2 Pin=R1-2
+Removed Pin From Net: NetName=+12V-2 Pin=R7-1
+Removed Pin From Net: NetName=GND Pin=R97-1
+Removed Pin From Net: NetName=AD29 Pin=R140-2
+Removed Pin From Net: NetName=GND Pin=R141-1
+Removed Pin From Net: NetName=AD29 Pin=R141-2
+Removed Pin From Net: NetName=AD29 Pin=U5-2
+Removed Pin From Net: NetName=GND Pin=U16-3
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D1
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D34
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=Q1
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R1
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R7
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R97
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R140
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R141
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R145
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=U16
+Added Room: Name=U_01 MCU
+Added Room: Name=U_02 TFT&LED
+Added Room: Name=U_03 METER&PWM&KEY
+Added Room: Name=U_04 SWITCH

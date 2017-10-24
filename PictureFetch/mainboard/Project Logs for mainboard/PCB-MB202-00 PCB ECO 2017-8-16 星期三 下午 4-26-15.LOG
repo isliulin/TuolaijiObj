@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=PWMOUT1 Pin=JA1-23
+Removed Pin From Net: NetName=EIN-AD04 Pin=JA1-25
+Removed Pin From Net: NetName=EIN-AD05 Pin=JA1-27
+Added Pin To Net: NetName=EIN-AD04 Pin=JA1-23
+Added Pin To Net: NetName=EIN-AD05 Pin=JA1-25
+Added Pin To Net: NetName=PWMOUT1 Pin=JA1-27

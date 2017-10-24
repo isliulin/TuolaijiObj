@@ -33,7 +33,7 @@ void SCI0_Init(void)
 #if 1
     SCI0SR2 = 0x00;
     SCI0BDH = 0x00;
-    SCI0BDL = 0x0d; //波特率=8M/(16*0x34)=9600          
+    SCI0BDL = 0x34; //波特率=8M/(16*0x34)=9600          
                     //0x1a;//波特率=8M/(16*0x1a)=19200      
                     // 0x0d;//波特率=8M/(16*0x0d)=38400     
                     // 0x09;//波特率=8M/(16*0x09)=57600     
@@ -101,6 +101,29 @@ U8 SCI0_Getbyte(void)
     
 }
 
+U8 SCI1_Getbyte(void)
+{
+	U8 temp,temp1;
+	temp1 = SCI1SR1;
+	if(!(SCI1SR1&0x20))
+	{
+		
+		//SCI0DRL;
+		return 0;
+	}//no data to be received
+	//while(SCI0SR1_RDRF==0)
+	//{
+		//out_wdt_reset();
+		//return 0xff;
+	//}
+	//temp = SCI0SR1;
+	temp1 = SCI1SR1;
+	temp = SCI1DRL;//清接收标志
+	
+	return temp;
+    
+}
+
 U8 uart_waitchar(void) {
   U8 c ,temp1;
 	static U16 temp;			
@@ -124,6 +147,10 @@ U8 uart_waitchar(void) {
 ************************************************/
 void SCI1_Init(void)
 {
+  
+	  DDRS_DDRS2 =0;
+    DDRS_DDRS3 =1;
+    
     SCI1SR2 = 0x00;
     SCI1BDH = 0x00;   
    	SCI1BDL = 0x34; //00x34波特率=8M/(16*0x34)=9600          

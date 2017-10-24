@@ -1,0 +1,22 @@
+Removed Pin From Net: NetName=GND Pin=D202-1
+Removed Pin From Net: NetName=+5VV Pin=D202-2
+Removed Pin From Net: NetName=GND Pin=JV02-1
+Removed Pin From Net: NetName=GND Pin=JV02-3
+Removed Pin From Net: NetName=+12V-1 Pin=JV02-4
+Removed Pin From Net: NetName=GND Pin=R213-2
+Removed Pin From Net: NetName=GND Pin=R231-2
+Removed Pin From Net: NetName=NetC205_1 Pin=R232-1
+Removed Pin From Net: NetName=GND Pin=R232-2
+Removed Member From Class: ClassName=U_01 MCU Member=C202
+Removed Member From Class: ClassName=U_01 MCU Member=C206
+Removed Member From Class: ClassName=U_01 MCU Member=D202
+Removed Member From Class: ClassName=U_01 MCU Member=JV02
+Removed Member From Class: ClassName=U_01 MCU Member=R212
+Removed Member From Class: ClassName=U_01 MCU Member=R213
+Removed Member From Class: ClassName=U_01 MCU Member=R231
+Removed Member From Class: ClassName=U_01 MCU Member=R232
+Removed Member From Class: ClassName=U_01 MCU Member=R234
+Removed Member From Class: ClassName=U_01 MCU Member=TP142
+Added Pin To Net: NetName=NetJ2_13 Pin=J2-13
+Added Pin To Net: NetName=NetJ2_13 Pin=TP15-1
+Added Net: Name=NetJ2_13

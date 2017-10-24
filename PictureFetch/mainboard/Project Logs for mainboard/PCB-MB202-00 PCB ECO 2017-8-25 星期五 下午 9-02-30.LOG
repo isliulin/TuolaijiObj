@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=+5VM Pin=C69-2
+Removed Pin From Net: NetName=+5VM Pin=C70-2
+Removed Pin From Net: NetName=+5VM Pin=C71-2
+Removed Pin From Net: NetName=+5VM Pin=C72-2
+Removed Pin From Net: NetName=+5VM Pin=U5-16
+Removed Pin From Net: NetName=+5VM Pin=U17-16
+Removed Pin From Net: NetName=+5VM Pin=U18-16
+Removed Pin From Net: NetName=+5VM Pin=U20-16
+Added Pin To Net: NetName=+5V Pin=C69-2
+Added Pin To Net: NetName=+5V Pin=C70-2
+Added Pin To Net: NetName=+5V Pin=C71-2
+Added Pin To Net: NetName=+5V Pin=C72-2
+Added Pin To Net: NetName=+5V Pin=U5-16
+Added Pin To Net: NetName=+5V Pin=U17-16
+Added Pin To Net: NetName=+5V Pin=U18-16
+Added Pin To Net: NetName=+5V Pin=U20-16

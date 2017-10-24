@@ -66,21 +66,24 @@ static uchar Flash_WaitBusy(void)
 	SPI_WriteByte(FLASH_READ_STATAS);	///read status register
 	do 
 	{  
-		state_reg = SPI_ReadByte();  
+
+		state_reg = SPI_ReadByte();
+	  
 		WaitDelay++;
 		if(WaitDelay%1000==0)///当等待的时间过长为1000的倍数时需清外置看门狗
 		{
 		//	out_wdt_reset();
-		 	if(WaitDelay>60000)
+	 	if(WaitDelay>60000)
 		 	{
-		 		Error_Data=err_flash_unkown;
+	 		Error_Data=err_flash_unkown;
 		 		break;
-		 	}
+	 	}
 //			CAN0_ReadFrame();
 		}
 	} 
 	while(state_reg&0x01); ///是否在空闲状态
-	CS_H(); 
+	CS_H();
+	 
 	return	Error_Data;
 } 
 /***************************************************************************
@@ -130,7 +133,7 @@ uchar Erase_Flash(void)
   CS_L(); 
   SPI_WriteByte(FLASH_WHOLE_ERASE);  
   CS_H();   
-  ///Flash_WaitBusy();
+  Flash_WaitBusy();
   return	Error_Data;
 }    
 /********************************************************************************* 
@@ -303,7 +306,7 @@ uchar Flash_PageRead(ulong addr,uint len,uchar *pdata)
 		return	Error_Data;
   
   CS_L(); 
-  SPI_WriteByte(FLASH_FAST_READ);	
+  SPI_WriteByte(FLASH_CMD_READ);	
   SPI_WriteByte((uchar)( (addr&0x00FF0000) >>16)); 
   SPI_WriteByte((uchar)( (addr&0x0000FF00) >>8)); 
   SPI_WriteByte((uchar)(addr&0x000000FF)); 
@@ -334,10 +337,10 @@ void	Bootloader_Mode_Change(void)
 {
 	///给视频板供电
 	V_5V_CTRL_IO  = IO_OUTPUT; 
-	V_5V_CTRL     = IO_HIGHT;        
+	V_5V_CTRL     = 1;        
 	///下载外挂FLASH使能脚
 	DOWNLOAD_CTRL_IO =  IO_OUTPUT; 
-	DOWNLOAD_CTRL    =  IO_HIGHT; 
+	DOWNLOAD_CTRL    =  1; 
 	///电平转换芯片的S脚，即模块切换
 	MODE_CTRL_IO  = IO_OUTPUT;
 	MODE_CTRL     = IO_HIGHT;///为高电平时可烧写外挂FLASH

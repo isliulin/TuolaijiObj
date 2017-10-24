@@ -1,0 +1,5 @@
+Record=SheetSymbol|SourceDocument=SCH-MB202-00.SchDoc|Designator=U_01 MCU|SchDesignator=U_01 MCU|FileName=01 MCU.SchDoc|SymbolType=Normal|RawFileName=01 MCU.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol
+Record=SheetSymbol|SourceDocument=SCH-MB202-00.SchDoc|Designator=U_02 POWER&LED|SchDesignator=U_02 POWER&LED|FileName=02 POWER&LED.SchDoc|SymbolType=Normal|RawFileName=02 POWER&LED.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol
+Record=SheetSymbol|SourceDocument=SCH-MB202-00.SchDoc|Designator=U_03 METER&PWM&KEY|SchDesignator=U_03 METER&PWM&KEY|FileName=03 METER&PWM&KEY.SchDoc|SymbolType=Normal|RawFileName=03 METER&PWM&KEY.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol
+Record=SheetSymbol|SourceDocument=SCH-MB202-00.SchDoc|Designator=U_04 SWITCH|SchDesignator=U_04 SWITCH|FileName=04 SWITCH.SchDoc|SymbolType=Normal|RawFileName=04 SWITCH.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol
+Record=TopLevelDocument|FileName=SCH-MB202-00.SchDoc

@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=V Pin=C2-2
+Removed Pin From Net: NetName=V Pin=CP1-1
+Removed Member From Class: ClassName=U_02 TFT&LED Member=LOGO
+Removed Member From Class: ClassName=U_02 TFT&LED Member=LOGO
+Added Pin To Net: NetName=NetC2_2 Pin=C2-2
+Added Pin To Net: NetName=NetC2_2 Pin=CP1-1
+Added Net: Name=NetC2_2

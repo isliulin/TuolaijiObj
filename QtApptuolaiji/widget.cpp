@@ -5,6 +5,7 @@
 #include <QTime>
 #include <QThread>
 
+
 unsigned char CrcCheck(char* buff, int bufflen)
 {
     unsigned char temp = 0;
@@ -166,14 +167,16 @@ union {
     char D8[2];
 }union16;
 
+
 void CSimpleThread::SendImageFile(QString address, QString filepath)
 {
-   // qDebug()<<address <<filepath <<"_____________";
+    qDebug()<<address <<filepath <<"_____________";
     QFile file(filepath);
     if (!file.open(QIODevice::ReadOnly))
     {
         Log("Cannot open file for reading: ");
     }else{
+        Log("Start download dat");
         QDataStream in(&file);
         uint len;
 
@@ -181,19 +184,26 @@ void CSimpleThread::SendImageFile(QString address, QString filepath)
         qint64 fileSize = file.size();
 
         Log("文件路径:"+filepath + "   下载地址:" + address + "   文件大小:" + QString::number(file.size()));
+        qWarning()<<"waitting for start";
+        char gettemp = 0;
+
+        gettemp = 0x01;
+        serialport->write(&gettemp, 1);
+        return;
+
         if(serialport->waitForReadyRead(1000*1) )
         {
             QByteArray readdata = serialport->readAll();
             if (readdata[0] != 'C')
             {
-                Log("No find 'C' !");
+                Log("recive data No find 'C' !");
                 return;
             }else{
                 Log("Mcu is readly!");
             }
         }else{
-            Log("Mcu no readly ! break!");
-            //return;
+            Log("Mcu no readly, select time out ! break!");
+            return;
         }
 
 
@@ -210,8 +220,6 @@ void CSimpleThread::SendImageFile(QString address, QString filepath)
         // |-------------------------------------------------------------------|
         // |0xaa | 0x01 | 0x00 0x08|  xx xx xx xx   xx xx xx xx | xx  | 0xbb |
         // |-------------------------------------------------------------------|
-
-
         char bufftemp[100] = {0};
         bufftemp[0] = 0xAA;
         bufftemp[1] = 0x01;
@@ -241,7 +249,7 @@ void CSimpleThread::SendImageFile(QString address, QString filepath)
             QByteArray readdata = serialport->read(1);
         }else{
             Log("Error:" + address + " 发送文件 " + filepath +" 地址未准备好");
-            //return;
+            return;
         }
 
         char filebuffdata[512];
@@ -415,7 +423,7 @@ void Widget::on_pushButtonOpenFile_clicked()
 
 void Widget::writeLog(QString value)
 {
-    qDebug()<<value;
+  //  qDebug()<<value;
     Log(value);
 }
 

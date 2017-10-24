@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=+5VM Pin=CP26-1
+Removed Member From Class: ClassName=U_01 MCU Member=CP26
+Added Pin To Net: NetName=+5V Pin=CP26-1
+Added Member To Class: ClassName=U_04 SWITCH Member=Component CP26 10u/16V

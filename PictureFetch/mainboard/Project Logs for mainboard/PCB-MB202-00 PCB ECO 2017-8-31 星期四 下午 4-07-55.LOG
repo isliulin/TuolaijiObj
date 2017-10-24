@@ -1,0 +1,87 @@
+Removed Pin From Net: NetName=LCD-PWM Pin=U10-5
+Removed Pin From Net: NetName=PWM1 Pin=U10-6
+Removed Pin From Net: NetName=LED_BK Pin=U10-7
+Removed Pin From Net: NetName=SDA Pin=U10-15
+Removed Pin From Net: NetName=SCL Pin=U10-16
+Removed Pin From Net: NetName=SEND_DATA2 Pin=U10-112
+Removed Pin From Net: NetName=DA1 Pin=U10-113
+Removed Pin From Net: NetName=DB1 Pin=U10-114
+Removed Pin From Net: NetName=DC1 Pin=U10-115
+Removed Pin From Net: NetName=BELL Pin=U10-116
+Removed Pin From Net: NetName=NetRP28_8 Pin=U10-117
+Removed Pin From Net: NetName=NetRP28_7 Pin=U10-118
+Removed Pin From Net: NetName=NetRP28_6 Pin=U10-119
+Removed Pin From Net: NetName=NetRP28_5 Pin=U10-120
+Removed Pin From Net: NetName=NetRP30_8 Pin=U10-121
+Removed Pin From Net: NetName=NetRP30_7 Pin=U10-122
+Removed Pin From Net: NetName=NetRP30_6 Pin=U10-123
+Removed Pin From Net: NetName=NetRP30_5 Pin=U10-124
+Removed Pin From Net: NetName=NetRP27_8 Pin=U10-125
+Removed Pin From Net: NetName=NetRP27_7 Pin=U10-126
+Removed Pin From Net: NetName=NetRP27_6 Pin=U10-127
+Removed Pin From Net: NetName=NetRP27_5 Pin=U10-128
+Removed Pin From Net: NetName=NetRP14_8 Pin=U10-129
+Removed Pin From Net: NetName=NetRP14_7 Pin=U10-130
+Removed Pin From Net: NetName=NetRP14_6 Pin=U10-133
+Removed Pin From Net: NetName=NetRP14_5 Pin=U10-134
+Removed Pin From Net: NetName=DA2 Pin=U10-142
+Removed Pin From Net: NetName=DB2 Pin=U10-143
+Removed Pin From Net: NetName=DC2 Pin=U10-144
+Change Component Comment : Designator=RP7 Old Comment=472*4 New Comment=103*4
+Change Component Comment : Designator=RP30 Old Comment=472*4 New Comment=103*4
+Change Component Comment : Designator=RP28 Old Comment=472*4 New Comment=103*4
+Change Component Comment : Designator=RP27 Old Comment=472*4 New Comment=103*4
+Change Component Comment : Designator=RP14 Old Comment=472*4 New Comment=103*4
+Change Component Comment : Designator=RP3 Old Comment=472*4 New Comment=103*4
+Change Component Designator: OldDesignator=RP7 NewDesignator=RP?
+Added Component: Designator=RP?(R4)
+Added Component: Designator=RP?(R4)
+Added Component: Designator=RP?(R4)
+Added Pin To Net: NetName=GND Pin=RP?-1
+Added Pin To Net: NetName=GND Pin=RP?-1
+Added Pin To Net: NetName=GND Pin=RP?-1
+Added Pin To Net: NetName=GND Pin=RP?-2
+Added Pin To Net: NetName=GND Pin=RP?-2
+Added Pin To Net: NetName=GND Pin=RP?-2
+Added Pin To Net: NetName=GND Pin=RP?-3
+Added Pin To Net: NetName=GND Pin=RP?-3
+Added Pin To Net: NetName=GND Pin=RP?-3
+Added Pin To Net: NetName=GND Pin=RP?-4
+Added Pin To Net: NetName=GND Pin=RP?-4
+Added Pin To Net: NetName=GND Pin=RP?-4
+Added Pin To Net: NetName=LCD-PWM Pin=U10-6
+Added Pin To Net: NetName=PWM1 Pin=U10-7
+Added Pin To Net: NetName=LED_BK Pin=U10-8
+Added Pin To Net: NetName=SEND_DATA2 Pin=U10-109
+Added Pin To Net: NetName=DA1 Pin=U10-110
+Added Pin To Net: NetName=DB1 Pin=U10-111
+Added Pin To Net: NetName=DC1 Pin=U10-112
+Added Pin To Net: NetName=BELL Pin=U10-113
+Added Pin To Net: NetName=NetRP28_8 Pin=U10-114
+Added Pin To Net: NetName=NetRP28_7 Pin=U10-115
+Added Pin To Net: NetName=NetRP28_6 Pin=U10-116
+Added Pin To Net: NetName=NetRP28_5 Pin=U10-117
+Added Pin To Net: NetName=NetRP30_8 Pin=U10-118
+Added Pin To Net: NetName=NetRP30_7 Pin=U10-119
+Added Pin To Net: NetName=NetRP30_6 Pin=U10-120
+Added Pin To Net: NetName=NetRP30_5 Pin=U10-121
+Added Pin To Net: NetName=NetRP27_8 Pin=U10-122
+Added Pin To Net: NetName=NetRP27_7 Pin=U10-123
+Added Pin To Net: NetName=NetRP27_6 Pin=U10-124
+Added Pin To Net: NetName=NetRP27_5 Pin=U10-125
+Added Pin To Net: NetName=NetRP14_8 Pin=U10-126
+Added Pin To Net: NetName=NetRP14_7 Pin=U10-127
+Added Pin To Net: NetName=NetRP14_6 Pin=U10-128
+Added Pin To Net: NetName=NetRP14_5 Pin=U10-129
+Added Pin To Net: NetName=DA2 Pin=U10-140
+Added Pin To Net: NetName=DB2 Pin=U10-141
+Added Pin To Net: NetName=DC2 Pin=U10-142
+Added Pin To Net: NetName=SDA Pin=U10-143
+Added Pin To Net: NetName=SCL Pin=U10-144
+Change Net Name : Old Net Name=NetRP7_5 New Net Name=NetRP?_5
+Change Net Name : Old Net Name=NetRP7_6 New Net Name=NetRP?_6
+Change Net Name : Old Net Name=NetRP7_7 New Net Name=NetRP?_7
+Change Net Name : Old Net Name=NetRP7_8 New Net Name=NetRP?_8
+Added Member To Class: ClassName=U_01 MCU Member=Component RP? 103*4
+Added Member To Class: ClassName=U_01 MCU Member=Component RP? 103*4
+Added Member To Class: ClassName=U_01 MCU Member=Component RP? 103*4

@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=AD21 Pin=RP24-1
+Removed Pin From Net: NetName=AD22 Pin=RP24-2
+Removed Pin From Net: NetName=AD23 Pin=RP24-3
+Added Pin To Net: NetName=AD21 Pin=RP24-2
+Added Pin To Net: NetName=AD22 Pin=RP24-3
+Added Pin To Net: NetName=AD23 Pin=RP24-4

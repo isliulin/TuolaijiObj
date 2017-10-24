@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=F03 Pin=DZ13-1
+Removed Pin From Net: NetName=F02 Pin=DZ13-3
+Removed Pin From Net: NetName=F05 Pin=DZ13-4
+Removed Pin From Net: NetName=F04 Pin=DZ13-6
+Added Pin To Net: NetName=F02 Pin=DZ13-1
+Added Pin To Net: NetName=F03 Pin=DZ13-3
+Added Pin To Net: NetName=F04 Pin=DZ13-4
+Added Pin To Net: NetName=F05 Pin=DZ13-6

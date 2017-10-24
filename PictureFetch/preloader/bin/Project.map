@@ -1,5 +1,5 @@
 *** EVALUATION ***
-PROGRAM "d:\Users\Administrator\Desktop\obj\PictureFetch\preloader\bin\Project.abs"
+PROGRAM "C:\Users\zestroly\Desktop\TuolaijiObj\PictureFetch\preloader\bin\Project.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -15,8 +15,6 @@ FILE SECTION
 mc9s12xhz256.c.o                        Model: BANKED,        Lang: ANSI-C
 main.c.o                                Model: BANKED,        Lang: ANSI-C
 Start12.c.o                             Model: BANKED,        Lang: ANSI-C
-sci.c.o                                 Model: BANKED,        Lang: ANSI-C
-Xmodule.c.o                             Model: BANKED,        Lang: ANSI-C
 MX25L12845D.c.o                         Model: BANKED,        Lang: ANSI-C
 
 *********************************************************************************************
@@ -37,7 +35,7 @@ Section Name                    Size  Type     From       To       Segment
 .init                             15     R     0xC000     0xC00E   ROM_C000
 .startData                        18     R     0xC00F     0xC020   ROM_C000
 .copy                              2     R     0xC021     0xC022   ROM_C000
-.text                            335     R   0xFE8000   0xFE814E   PAGE_FE
+.text                            389     R   0xFE8000   0xFE8184   PAGE_FE
 .stack                           256   R/W     0x2000     0x20FF   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
@@ -557,7 +555,7 @@ Section Name                    Size  Type     From       To       Segment
 .vectSeg514_vect                   2     R     0xFFFE     0xFFFF   .vectSeg514
 
 Summary of section sizes per section type:
-READ_ONLY (R):         174 (dec:      372)
+READ_ONLY (R):         1AA (dec:      426)
 READ_WRITE (R/W):      10A (dec:      266)
 NO_INIT (N/I):         27B (dec:      635)
 
@@ -605,7 +603,7 @@ MODULE:                 -- mc9s12xhz256.c.o --
      _DBGXDHM                                    2E       1       1       0   .abs_section_2e
      _DBGXDLM                                    2F       1       1       0   .abs_section_2f
      _PPAGE                                      30       1       1       0   .abs_section_30
-     _PORTK                                      32       1       1       0   .abs_section_32
+     _PORTK                                      32       1       1       2   .abs_section_32
      _DDRK                                       33       1       1       0   .abs_section_33
      _SYNR                                       34       1       1       0   .abs_section_34
      _REFDV                                      35       1       1       0   .abs_section_35
@@ -664,10 +662,10 @@ MODULE:                 -- mc9s12xhz256.c.o --
      _IIC0_IBSR                                  C3       1       1       0   .abs_section_c3
      _IIC0_IBDR                                  C4       1       1       0   .abs_section_c4
      _IIC0_IBCR2                                 C5       1       1       0   .abs_section_c5
-     _SCI0ACR2                                   CA       1       1       1   .abs_section_ca
-     _SCI0CR2                                    CB       1       1       1   .abs_section_cb
+     _SCI0ACR2                                   CA       1       1       0   .abs_section_ca
+     _SCI0CR2                                    CB       1       1       0   .abs_section_cb
      _SCI0SR1                                    CC       1       1       0   .abs_section_cc
-     _SCI0SR2                                    CD       1       1       1   .abs_section_cd
+     _SCI0SR2                                    CD       1       1       0   .abs_section_cd
      _SCI0DRH                                    CE       1       1       0   .abs_section_ce
      _SCI0DRL                                    CF       1       1       0   .abs_section_cf
      _SCI1ACR2                                   D2       1       1       0   .abs_section_d2
@@ -967,7 +965,7 @@ MODULE:                 -- mc9s12xhz256.c.o --
      _PITMTLD1                                  347       1       1       0   .abs_section_347
      _XGCHID                                    382       1       1       0   .abs_section_382
      _XGCCR                                     39D       1       1       0   .abs_section_39d
-     _PORTAB                                      0       2       2       0   .abs_section_0
+     _PORTAB                                      0       2       2       2   .abs_section_0
      _DDRAB                                       2       2       2       0   .abs_section_2
      _PORTCD                                      4       2       2       3   .abs_section_4
      _DDRCD                                       6       2       2       3   .abs_section_6
@@ -1012,7 +1010,7 @@ MODULE:                 -- mc9s12xhz256.c.o --
      _ATDDR13                                    AA       2       2       0   .abs_section_aa
      _ATDDR14                                    AC       2       2       0   .abs_section_ac
      _ATDDR15                                    AE       2       2       0   .abs_section_ae
-     _SCI0BD                                     C8       2       2       2   .abs_section_c8
+     _SCI0BD                                     C8       2       2       0   .abs_section_c8
      _SCI1BD                                     D0       2       2       0   .abs_section_d0
      _FADDR                                     108       2       2       0   .abs_section_108
      _FDATA                                     10A       2       2       0   .abs_section_10a
@@ -1090,32 +1088,23 @@ MODULE:                 -- mc9s12xhz256.c.o --
      _XGR7                                      3AE       2       2       0   .abs_section_3ae
 MODULE:                 -- main.c.o --
 - PROCEDURES:
-     spiflash_init                           FE8000       1       1       2   .text       
-     main                                    FE8001      22      34       2   .text       
+     main                                    FE8000      6F     111       2   .text       
 - VARIABLES:
 MODULE:                 -- Start12.c.o --
 - PROCEDURES:
-     Init                                    FE8023      29      41       2   .text       
+     Init                                    FE806F      29      41       2   .text       
      _Startup                                  C000       F      15       0   .init       
 - VARIABLES:
      _startupData                              C00F       6       6       3   .startData  
 - LABELS:
      __SEG_END_SSTACK                          2100       0       0       1               
-MODULE:                 -- sci.c.o --
-- PROCEDURES:
-     SCI0_Init                               FE804C      11      17       2   .text       
-- VARIABLES:
-MODULE:                 -- Xmodule.c.o --
-- PROCEDURES:
-     Xmodule_init                            FE805D       5       5       2   .text       
-- VARIABLES:
 MODULE:                 -- MX25L12845D.c.o --
 - PROCEDURES:
-     SPI_WriteByte                           FE8062      26      38       4   .text       
-     SPI_ReadByte                            FE8088      21      33       8   .text       
-     Flash_WaitBusy                          FE80A9      40      64       4   .text       
-     Flash_Read_ID                           FE80E9      37      55       2   .text       
-     Bootloader_Mode_Change                  FE8120      2F      47       2   .text       
+     SPI_WriteByte                           FE8098      26      38       4   .text       
+     SPI_ReadByte                            FE80BE      21      33       8   .text       
+     Flash_WaitBusy                          FE80DF      40      64       4   .text       
+     Flash_Read_ID                           FE811F      37      55       2   .text       
+     Bootloader_Mode_Change                  FE8156      2F      47       2   .text       
 - VARIABLES:
      ISD_sendbuf                               2100       A      10       6   .common     
 
@@ -1124,10 +1113,8 @@ MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   mc9s12xhz256.c.o                           635      0      0
-  main.c.o                                     0     35      0
+  main.c.o                                     0    111      0
   Start12.c.o                                  0     56      0
-  sci.c.o                                      0     17      0
-  Xmodule.c.o                                  0      5      0
   MX25L12845D.c.o                             10    237      0
   other                                      256     20      2
 
@@ -1135,8 +1122,8 @@ MODULE STATISTIC
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
-  spiflash_init main Init SCI0_Init Xmodule_init SPI_WriteByte SPI_ReadByte 
-  Flash_WaitBusy Flash_Read_ID Bootloader_Mode_Change 
+  main Init SPI_WriteByte SPI_ReadByte Flash_WaitBusy Flash_Read_ID 
+  Bootloader_Mode_Change 
 SECTION: ".init"
   _Startup 
 SECTION: ".abs_section_8"
@@ -2174,7 +2161,7 @@ SECTION: ".common"
 OBJECT LIST SORTED BY ADDRESS
      Name                                      Addr   hSize   dSize     Ref    Section   RLIB
 ---------------------------------------------------------------------------------------------
-     _PORTAB                                      0       2       2       0   .abs_section_0
+     _PORTAB                                      0       2       2       2   .abs_section_0
      _DDRAB                                       2       2       2       0   .abs_section_2
      _PORTCD                                      4       2       2       3   .abs_section_4
      _DDRCD                                       6       2       2       3   .abs_section_6
@@ -2211,7 +2198,7 @@ OBJECT LIST SORTED BY ADDRESS
      _DBGXDHM                                    2E       1       1       0   .abs_section_2e
      _DBGXDLM                                    2F       1       1       0   .abs_section_2f
      _PPAGE                                      30       1       1       0   .abs_section_30
-     _PORTK                                      32       1       1       0   .abs_section_32
+     _PORTK                                      32       1       1       2   .abs_section_32
      _DDRK                                       33       1       1       0   .abs_section_33
      _SYNR                                       34       1       1       0   .abs_section_34
      _REFDV                                      35       1       1       0   .abs_section_35
@@ -2309,11 +2296,11 @@ OBJECT LIST SORTED BY ADDRESS
      _IIC0_IBSR                                  C3       1       1       0   .abs_section_c3
      _IIC0_IBDR                                  C4       1       1       0   .abs_section_c4
      _IIC0_IBCR2                                 C5       1       1       0   .abs_section_c5
-     _SCI0BD                                     C8       2       2       2   .abs_section_c8
-     _SCI0ACR2                                   CA       1       1       1   .abs_section_ca
-     _SCI0CR2                                    CB       1       1       1   .abs_section_cb
+     _SCI0BD                                     C8       2       2       0   .abs_section_c8
+     _SCI0ACR2                                   CA       1       1       0   .abs_section_ca
+     _SCI0CR2                                    CB       1       1       0   .abs_section_cb
      _SCI0SR1                                    CC       1       1       0   .abs_section_cc
-     _SCI0SR2                                    CD       1       1       1   .abs_section_cd
+     _SCI0SR2                                    CD       1       1       0   .abs_section_cd
      _SCI0DRH                                    CE       1       1       0   .abs_section_ce
      _SCI0DRL                                    CF       1       1       0   .abs_section_cf
      _SCI1BD                                     D0       2       2       0   .abs_section_d0
@@ -2690,36 +2677,26 @@ OBJECT LIST SORTED BY ADDRESS
      _XGR7                                      3AE       2       2       0   .abs_section_3ae
      ISD_sendbuf                               2100       A      10       6   .common     
      _Startup                                  C000       F      15       0   .init       
-     spiflash_init                           FE8000       1       1       2   .text       
-     main                                    FE8001      22      34       2   .text       
-     Init                                    FE8023      29      41       2   .text       
-     SCI0_Init                               FE804C      11      17       2   .text       
-     Xmodule_init                            FE805D       5       5       2   .text       
-     SPI_WriteByte                           FE8062      26      38       4   .text       
-     SPI_ReadByte                            FE8088      21      33       8   .text       
-     Flash_WaitBusy                          FE80A9      40      64       4   .text       
-     Flash_Read_ID                           FE80E9      37      55       2   .text       
-     Bootloader_Mode_Change                  FE8120      2F      47       2   .text       
+     main                                    FE8000      6F     111       2   .text       
+     Init                                    FE806F      29      41       2   .text       
+     SPI_WriteByte                           FE8098      26      38       4   .text       
+     SPI_ReadByte                            FE80BE      21      33       8   .text       
+     Flash_WaitBusy                          FE80DF      40      64       4   .text       
+     Flash_Read_ID                           FE811F      37      55       2   .text       
+     Bootloader_Mode_Change                  FE8156      2F      47       2   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
 ---------------------------------------------------------------------------------------------
 NOT USED PROCEDURES
-sci.c.o:
-  SCI0_Send SCI0_Sendbytes SCI0_Getbyte uart_waitchar SCI1_Init SCI1_Send 
-  SCI1_Sendbytes SCI2_Init SCI2_Send SCI2_Sendbytes SCI4_Init SCI4_Send 
-Xmodule.c.o:
-  XmodemWaitStart clearPacketData CheckSum RecviceData getFileDownloadAddress 
-  getFileDownloadSize XmodemRecivePacket 
+main.c.o:
+  pwm_init spiflash_init memset init_io CRGModuleInitial 
 MX25L12845D.c.o:
   Erase_Flash Erase_Sector Erase_Block Flash_PageWrite Flash_Page_Write 
   Flash_PageRead 
 NOT USED VARIABLES
 main.c.o:
   PictureMsg 
-sci.c.o:
-  SCI0_Status sci0_index crccheck val SCI1_Status sci1_index temp_index temp.1 
-  sci_que sci0_dat sci1_dat SCI_data 
 
 *********************************************************************************************
 COPYDOWN SECTION
@@ -2732,11 +2709,9 @@ Filling bytes inserted
 OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
 _Startup                  USES __SEG_END_SSTACK Init main 
-main                      USES Xmodule_init spiflash_init 
-                                Bootloader_Mode_Change Flash_Read_ID 
+main                      USES Bootloader_Mode_Change Flash_Read_ID _PORTK 
+                                _PORTAB 
 Init                      USES _startupData 
-SCI0_Init                 USES _SCI0SR2 _SCI0BD _SCI0ACR2 _SCI0CR2 
-Xmodule_init              USES SCI0_Init 
 SPI_WriteByte             USES _PTS 
 SPI_ReadByte              USES _PTS 
 Flash_WaitBusy            USES _PTS SPI_WriteByte SPI_ReadByte 
@@ -2751,12 +2726,6 @@ DEPENDENCY TREE
  | 
  +- main                
  |  | 
- |  +- Xmodule_init        
- |  |  | 
- |  |  +- SCI0_Init           
- |  |       
- |  +- spiflash_init       
- |  |    
  |  +- Bootloader_Mode_Change
  |  |    
  |  +- Flash_Read_ID       
@@ -2784,5 +2753,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 5
-Total size of all blocks to be downloaded: 372
+Total size of all blocks to be downloaded: 426
 

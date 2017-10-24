@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=RS1 Pin=RP1-3
+Removed Pin From Net: NetName=WDI Pin=U10-61
+Removed Pin From Net: NetName=RS1 Pin=U10-73
+Added Pin To Net: NetName=WDI Pin=U10-48
+Added Pin To Net: NetName=RS1 Pin=U10-61
+Added Pin To Net: NetName=NetRP1_3 Pin=RP1-3
+Added Pin To Net: NetName=NetRP1_3 Pin=U10-73
+Added Net: Name=NetRP1_3

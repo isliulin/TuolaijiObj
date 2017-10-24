@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=SDA_TW8835 Pin=U10-87
+Removed Pin From Net: NetName=SCL_TW8835 Pin=U10-88
+Added Pin To Net: NetName=SCL_TW8835 Pin=U10-87
+Added Pin To Net: NetName=SDA_TW8835 Pin=U10-88

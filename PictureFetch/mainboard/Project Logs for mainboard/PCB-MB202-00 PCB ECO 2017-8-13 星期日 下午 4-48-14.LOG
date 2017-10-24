@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=+12V-1 Pin=TP60-1
+Removed Pin From Net: NetName=+12V-2 Pin=TP61-1
+Removed Member From Class: ClassName=U_02 TFT&LED Member=TP60
+Removed Member From Class: ClassName=U_02 TFT&LED Member=TP60
+Removed Member From Class: ClassName=U_02 TFT&LED Member=TP61
+Added Member To Class: ClassName=U_02 TFT&LED Member=Component DL8 LED

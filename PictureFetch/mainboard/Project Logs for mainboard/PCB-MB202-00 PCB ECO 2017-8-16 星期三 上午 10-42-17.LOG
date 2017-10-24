@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=MODA Pin=RP1-3
+Removed Pin From Net: NetName=NetRP1_2 Pin=U10-73
+Removed Pin From Net: NetName=RS1 Pin=U10-74
+Added Component: Designator=R1(cr0805)
+Added Pin To Net: NetName=MODA Pin=R1-1
+Added Pin To Net: NetName=GND Pin=R1-2
+Added Pin To Net: NetName=RS1 Pin=RP1-3
+Added Pin To Net: NetName=RS1 Pin=U10-73
+Added Pin To Net: NetName=NetRP1_2 Pin=U10-74
+Added Member To Class: ClassName=U_01 MCU Member=Component R1 10K

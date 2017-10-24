@@ -1,0 +1,57 @@
+Removed Pin From Net: NetName=GND Pin=C95-1
+Removed Pin From Net: NetName=GND Pin=C96-1
+Removed Pin From Net: NetName=GND Pin=D31-1
+Removed Pin From Net: NetName=+12V Pin=L5-2
+Removed Pin From Net: NetName=GND Pin=Q10-3
+Removed Pin From Net: NetName=GND Pin=R159-2
+Removed Pin From Net: NetName=GND Pin=R165-1
+Removed Pin From Net: NetName=GND Pin=R167-1
+Removed Pin From Net: NetName=GND Pin=R170-1
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=C95
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=C96
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=C97
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=CP9
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D29
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D30
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D31
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=L5
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=Q6
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=Q7
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=Q10
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=Q15
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R117
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R118
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R157
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R158
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R159
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R164
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R165
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R167
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R170
+Change Component Comment : Designator=R114 Old Comment=3K New Comment=150
+Change Component Comment : Designator=R115 Old Comment=10K New Comment=4.7K
+Change Component Comment : Designator=R116 Old Comment=821 New Comment=270
+Added Component: Designator=Q25(SOT89)
+Added Pin To Net: NetName=+5V Pin=C94-2
+Added Pin To Net: NetName=+5V Pin=CP10-1
+Added Pin To Net: NetName=GND Pin=D19-1
+Added Pin To Net: NetName=GND Pin=Q9-1
+Added Pin To Net: NetName=+5V Pin=Q25-3
+Added Pin To Net: NetName=+5V Pin=R115-1
+Added Pin To Net: NetName=BELL Pin=Q9-2
+Added Pin To Net: NetName=BELL Pin=U10-36
+Added Net: Name=BELL
+Added Pin To Net: NetName=NetCP8_1 Pin=CP8-1
+Added Pin To Net: NetName=NetCP8_1 Pin=D19-2
+Added Pin To Net: NetName=NetCP8_1 Pin=J3-1
+Added Pin To Net: NetName=NetCP8_1 Pin=R114-1
+Added Net: Name=NetCP8_1
+Added Pin To Net: NetName=NetQ25_1 Pin=Q25-1
+Added Pin To Net: NetName=NetQ25_1 Pin=R115-2
+Added Pin To Net: NetName=NetQ25_1 Pin=R116-2
+Added Net: Name=NetQ25_1
+Added Pin To Net: NetName=NetQ25_2 Pin=Q25-2
+Added Pin To Net: NetName=NetQ25_2 Pin=Q25-2
+Added Pin To Net: NetName=NetQ25_2 Pin=R114-2
+Added Net: Name=NetQ25_2
+Added Member To Class: ClassName=U_03 METER&PWM&KEY Member=Component Q25 BCX53

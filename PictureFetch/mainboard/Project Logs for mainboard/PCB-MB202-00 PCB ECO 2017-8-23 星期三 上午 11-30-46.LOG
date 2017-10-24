@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=AD21 Pin=RP22-1
+Removed Pin From Net: NetName=AD22 Pin=RP22-2
+Removed Pin From Net: NetName=AD23 Pin=RP22-3
+Removed Pin From Net: NetName=NetC63_1 Pin=RP22-6
+Removed Pin From Net: NetName=NetC64_1 Pin=RP22-7
+Removed Pin From Net: NetName=NetC65_1 Pin=RP22-8
+Added Pin To Net: NetName=AD23 Pin=RP22-2
+Added Pin To Net: NetName=AD22 Pin=RP22-3
+Added Pin To Net: NetName=AD21 Pin=RP22-4
+Added Pin To Net: NetName=NetC65_1 Pin=RP22-5
+Added Pin To Net: NetName=NetC64_1 Pin=RP22-6
+Added Pin To Net: NetName=NetC63_1 Pin=RP22-7

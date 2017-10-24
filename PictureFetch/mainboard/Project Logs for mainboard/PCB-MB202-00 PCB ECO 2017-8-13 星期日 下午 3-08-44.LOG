@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=NetDL8_2 Pin=DL8-2
+Removed Member From Class: ClassName=U_02 TFT&LED Member=DL8
+Added Component: Designator=DW8(LED1210)
+Added Pin To Net: NetName=NetDL8_2 Pin=DW8-2
+Change Net Name : Old Net Name=NetDL8_2 New Net Name=NetDL9_2
+Added Pin To Net: NetName=NetDW8_1 Pin=DW8-1
+Added Pin To Net: NetName=NetDW8_1 Pin=RL1-2
+Added Net: Name=NetDW8_1
+Added Member To Class: ClassName=U_02 TFT&LED Member=Component DW8 LED

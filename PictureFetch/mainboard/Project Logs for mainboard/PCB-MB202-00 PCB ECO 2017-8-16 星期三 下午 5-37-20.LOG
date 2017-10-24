@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=+B Pin=D8-1
+Removed Pin From Net: NetName=GND Pin=D8-2
+Removed Member From Class: ClassName=U_02 TFT&LED Member=D8

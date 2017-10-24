@@ -1,0 +1,17 @@
+Removed Pin From Net: NetName=GND Pin=RP2-1
+Removed Pin From Net: NetName=GND Pin=RP2-2
+Removed Pin From Net: NetName=GND Pin=RP2-3
+Removed Pin From Net: NetName=GND Pin=RP2-4
+Removed Pin From Net: NetName=BELL Pin=U10-108
+Removed Pin From Net: NetName=LED_RIGHT Pin=U10-109
+Removed Pin From Net: NetName=LED_LEFT Pin=U10-110
+Removed Pin From Net: NetName=DA1 Pin=U10-135
+Removed Pin From Net: NetName=DB1 Pin=U10-136
+Removed Pin From Net: NetName=DC1 Pin=U10-137
+Removed Member From Class: ClassName=U_01 MCU Member=RP2
+Added Pin To Net: NetName=LED_RIGHT Pin=U10-107
+Added Pin To Net: NetName=LED_LEFT Pin=U10-108
+Added Pin To Net: NetName=DC1 Pin=U10-109
+Added Pin To Net: NetName=DB1 Pin=U10-110
+Added Pin To Net: NetName=DA1 Pin=U10-111
+Added Pin To Net: NetName=BELL Pin=U10-112

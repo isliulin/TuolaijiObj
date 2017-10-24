@@ -1,0 +1,23 @@
+Removed Pin From Net: NetName=GND Pin=C166-1
+Removed Pin From Net: NetName=+5V Pin=C166-2
+Removed Pin From Net: NetName=+5V Pin=DL27-1
+Removed Pin From Net: NetName=+5V Pin=DL28-1
+Removed Pin From Net: NetName=GND Pin=U35-8
+Removed Pin From Net: NetName=NetC110_1 Pin=U35-10
+Removed Pin From Net: NetName=CLOCK_M1 Pin=U35-11
+Removed Pin From Net: NetName=CLOCK_OUT Pin=U35-12
+Removed Pin From Net: NetName=OE Pin=U35-13
+Removed Pin From Net: NetName=+5V Pin=U35-16
+Removed Member From Class: ClassName=U_02 TFT&LED Member=C166
+Removed Member From Class: ClassName=U_02 TFT&LED Member=DL27
+Removed Member From Class: ClassName=U_02 TFT&LED Member=DL28
+Removed Member From Class: ClassName=U_02 TFT&LED Member=RL69
+Removed Member From Class: ClassName=U_02 TFT&LED Member=RL70
+Removed Member From Class: ClassName=U_02 TFT&LED Member=U35
+Change Net Name : Old Net Name=NetC110_1 New Net Name=4051_MR
+Added Pin To Net: NetName=LED_LEFT Pin=RL68-1
+Added Pin To Net: NetName=LED_LEFT Pin=U10-110
+Added Net: Name=LED_LEFT
+Added Pin To Net: NetName=LED_RIGHT Pin=RL9-1
+Added Pin To Net: NetName=LED_RIGHT Pin=U10-109
+Added Net: Name=LED_RIGHT

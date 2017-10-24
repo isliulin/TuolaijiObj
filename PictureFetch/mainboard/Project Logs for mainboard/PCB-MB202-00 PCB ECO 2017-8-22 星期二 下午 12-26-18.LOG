@@ -1,0 +1,36 @@
+Removed Pin From Net: NetName=GND Pin=C75-1
+Removed Pin From Net: NetName=GND Pin=C78-2
+Removed Pin From Net: NetName=IS9 Pin=C81-1
+Removed Pin From Net: NetName=GND Pin=C81-2
+Removed Pin From Net: NetName=+5V Pin=D24-1
+Removed Pin From Net: NetName=GND Pin=D36-1
+Removed Pin From Net: NetName=GND Pin=D38-1
+Removed Pin From Net: NetName=GND Pin=D38-3
+Removed Pin From Net: NetName=GND Pin=D48-1
+Removed Pin From Net: NetName=IN1 Pin=D66-1
+Removed Pin From Net: NetName=IN2 Pin=D68-1
+Removed Pin From Net: NetName=GND Pin=DW12-1
+Removed Pin From Net: NetName=GND Pin=R36-1
+Removed Pin From Net: NetName=GND Pin=R38-1
+Removed Pin From Net: NetName=GND Pin=R131-2
+Removed Pin From Net: NetName=IS9 Pin=R147-2
+Removed Pin From Net: NetName=DSEL Pin=RP19-3
+Removed Pin From Net: NetName=+B Pin=U9-15
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=C75
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=C78
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=C81
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D24
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D36
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D38
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D48
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D66
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=D68
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=DW12
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R29
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R32
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R36
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R38
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R131
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=R147
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=RP19
+Removed Member From Class: ClassName=U_03 METER&PWM&KEY Member=U9
