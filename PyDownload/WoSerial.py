@@ -5,10 +5,11 @@ import serial
 import array
 import os
 import signal
-import os
+import sys
 import struct
 from time import sleep
 import six
+import  xml.dom.minidom
 
 flag_stop = False
 
@@ -22,7 +23,7 @@ def onsignal_int(a, b):
 signal.signal(signal.SIGINT, onsignal_int)
 signal.signal(signal.SIGTERM, onsignal_int)
 
-ser = serial.Serial(port='COM3', baudrate=38400, parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS, timeout=0.001)
+ser = serial.Serial(port='COM8', baudrate=38400, parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS, timeout=0.001)
 print("serial.isOpen() =", ser.isOpen())
 
 
@@ -62,7 +63,7 @@ def sendPacketHead(addr, filepath):
         cmd += SumCrc(cmd)
         cmd += b'\xBB'         #end
         print(tradata.hex())
-        #ser.write(cmd)
+        ser.write(cmd)
     else:
         print(sys._getframe().f_lineno,"No find this file:", filepath)
 
@@ -75,15 +76,19 @@ def sendPacketBody(databody):
 	
 def sendPacketBody(filepath):
     if (os.path.exists(filepath)):
-        f = open(filename, 'rb')
-        hasDownfilesize = 0;
+        f = open(filepath, 'rb')
+        CurrentIndex=0
+        hasDownfilesize = 0
         while True:
-            rdata = f.read(255)
+            rdata = f.read(1024)
             hasDownfilesize += len(rdata)
             if rdata:
-                print(rdata.hex())
+                CurrentIndex += 1
+                ser.write(rdata)
+                print(CurrentIndex , end=' ')
+                waitAckOk()
             else:
-                print("read compelet!")
+                print("read compelet!" )
                 break
         print(hasDownfilesize)
         f.close()
@@ -102,12 +107,8 @@ def dumpXmlFile(file_name):
             if child.nodeName == "#text":
                 continue
             sendPacketHead(child.getAttribute('Address') , child.getAttribute('FileName'))
+            sendPacketBody(child.getAttribute('FileName'))
 
-	
-
-	
-	
-	
 if __name__ == "__main__":
     dumpXmlFile("image.xml")
     exit(0)
