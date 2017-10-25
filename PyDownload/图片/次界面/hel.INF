@@ -1,0 +1,17 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offsethel 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE hel[] = { 
+    { offsethel+0x000000, 0x010CD2 },    // 上海申龙 副本 
+    { offsethel+0x010CD2, 0x021420 },    // 菜单-泰文 
+    { offsethel+0x0320F2, 0x00C71A },    // 胎压学习--密码 
+    { offsethel+0x03E80C, 0x001114 },    // 胎压学习-密码错误 
+    { offsethel+0x03F920, 0x000FD0 },    // 密码错误 
+    { offsethel+0x0408F0, 0x00CAFB },    // 胎压学习密码 
+}; 

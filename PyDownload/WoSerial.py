@@ -45,30 +45,76 @@ def SumCrc(bstr):
     return struct.pack('B', a)
 
 def sendPacketHead(addr, filepath):
-    filesize = os.path.getsize(filepath)
-    print(filesize)
-    #print (six.int2byte())
-    #print(hex(filesize))
-    bfilesize=struct.pack('>L', filesize)
-    baddr=struct.pack('>L', (int(addr,16)))
-    # start | type  |  lenght   | downaddr    |  filesize    | crc | end |
-    #  AA   |   00 |   00  00  | 00 00 00 00 |  00 00 00 00 | 00  |  BB |
-    #
-    cmd = b'\xAA'          #start
-    cmd += b'\x01'     #type
-    cmd += b'\x00\x08'     #lenght
-    tradata = baddr + bfilesize
-    cmd += tradata
-    cmd += SumCrc(tradata)
-    cmd += b'\xBB'         #end
-    print(cmd.hex())
-    ser.write(cmd)
+    if (os.path.exists(filepath)):
+        filesize = os.path.getsize(filepath)
+        #print (six.int2byte())
+        #print(hex(filesize))
+        bfilepath=struct.pack('>L', os.path.getsize(filepath))
+        baddr=struct.pack('>L', (int(addr,16)))
+        # start | type     |  lenght   | downaddr    |  filesize    | crc | end |
+        #  AA   |  00   00 |   00  00  | 00 00 00 00 |  00 00 00 00 | 00  |  BB |
+        #
+        cmd = b'\xAA'          #start
+        cmd += b'\x00\x01'     #type
+        cmd += b'\x00\x08'     #lenght
+        tradata = baddr + bfilepath
+        cmd += tradata
+        cmd += SumCrc(cmd)
+        cmd += b'\xBB'         #end
+        print(tradata.hex())
+        #ser.write(cmd)
+    else:
+        print(sys._getframe().f_lineno,"No find this file:", filepath)
 
 def sendPacketBody(databody):
     cmd = b'\xAA\x02' + struct.pack('>H', len(databody)) + databody + SumCrc(databody) + b'\xBB'
     print(cmd.hex())
     ser.write(cmd)
 
+	
+	
+def sendPacketBody(filepath):
+    if (os.path.exists(filepath)):
+        f = open(filename, 'rb')
+        hasDownfilesize = 0;
+        while True:
+            rdata = f.read(255)
+            hasDownfilesize += len(rdata)
+            if rdata:
+                print(rdata.hex())
+            else:
+                print("read compelet!")
+                break
+        print(hasDownfilesize)
+        f.close()
+    else:
+        print(sys._getframe().f_lineno, "No find this file:", filepath)
+
+
+	
+
+def dumpXmlFile(file_name):
+    if(os.path.exists(file_name)):
+        dom = xml.dom.minidom.parse(file_name)
+        root =dom.documentElement
+        childs = root.childNodes
+        for child in childs:
+            if child.nodeName == "#text":
+                continue
+            sendPacketHead(child.getAttribute('Address') , child.getAttribute('FileName'))
+
+	
+
+	
+	
+	
+if __name__ == "__main__":
+    dumpXmlFile("image.xml")
+    exit(0)
+	
+	
+	
+	
 filename = 'LOGO.BIN'
 
 

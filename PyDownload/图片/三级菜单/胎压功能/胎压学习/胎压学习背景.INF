@@ -1,0 +1,12 @@
+// *********** Combined file information ***********
+ 
+// typedef struct {    
+//     DWORD start;    
+//     DWORD length;   
+// } SLIDEIMAGE;       
+
+#define offsetÌ¥Ñ¹Ñ§Ï°±³¾° 0x0 //offset address for SPI writing
+ 
+FAR CONST SLIDEIMAGE Ì¥Ñ¹Ñ§Ï°±³¾°[] = { 
+    { offsetÌ¥Ñ¹Ñ§Ï°±³¾°+0x000000, 0x0212E5 },    // Ì¥Ñ¹Ñ§Ï° 
+}; 

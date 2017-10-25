@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Param ErrorCode="0">
+    <CMD Address="0x0000FF" FileName="图片/LOGO图标/申龙LOGO.BIN"/>
+    <CMD Address="0x00FF01" FileName="图片/次界面/菜单-泰文.bmp"/>
+    <CMD Address="0x00FF02" FileName="图片/可配置图片地址排序/故障内容/故障信息内容.BIN"/>
+    <CMD Address="0x00FF03" FileName="图片/可配置图片地址排序/诊断内容配置/CAN总线诊断内容/仪表诊断内容.BIN"/>
+    <CMD Address="0x00FF04" FileName="图片/可配置图片地址排序/主界面配置/主界面配置.BIN"/>
+    <CMD Address="0x00FF05" FileName="图片/三级菜单/故障查询/故障报警查询.BIN"/>
+</Param>
