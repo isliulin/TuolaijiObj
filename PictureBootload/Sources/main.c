@@ -21,31 +21,68 @@ static void delay(U32 us) {
 }
 
 
-XmodemData CurrentPacket;
-U32 addr;
-U32 filesize;
+
+TPacket CurrentPacket;
+XmodemData XModemPacket;
 
 
 void LoadOnePicture() {
-    addr = 0  ;
-     filesize = 0;
+  U16 i,j;
+  CurrentPacket.FileDownLoadAddress = 0  ;
+  CurrentPacket.FileSize = 0;
+  CurrentPacket.HasDownLoadSize = 0;
+  
+  
   XmodemWaitStart();
   XmodemAck(XMODEM_OK);
-  RecviceData(&CurrentPacket);
-  if(CurrentPacket.isFinish == 0x01) {
-     addr = getFileDownloadAddress(&CurrentPacket);
-     filesize =  getFileDownloadSize(&CurrentPacket);
-  }else{
-     
-    // RecviceData(&CurrentPacket);
-     
+  RecviceData(&XModemPacket);
+  
+  if(XModemPacket.isFinish == 0x01) {
+     CurrentPacket.FileDownLoadAddress = getFileDownloadAddress(&XModemPacket);
+     CurrentPacket.FileSize =  getFileDownloadSize(&XModemPacket);
+  }else{     
+    // RecviceData(&CurrentPacket);    
      return; 
   }
-  XmodemAck(XMODEM_OK); 
-  RecviceData(&CurrentPacket);
   
-}
+  
+  //Erase_Sector(0x100010/FLASH_SECTOR_SIZE);
+  //Flash_Page_Write(0x100010, 256, buff);
+  
+  
+  i = 0;
+  while(CurrentPacket.HasDownLoadSize < CurrentPacket.FileSize) 
+  {
+    i++; 
+    //擦除spl flash data
+    if( (i %  8 ) == 1)
+      Erase_Sector(CurrentPacket.FileDownLoadAddress * i/FLASH_SECTOR_SIZE) ;
+    
+    XmodemAck(XMODEM_OK);
+    RecviceData(&XModemPacket);
+    Flash_Page_Write(CurrentPacket.FileDownLoadAddress + (i-1)*512, 512, XModemPacket.Data);
+    
+    CurrentPacket.HasDownLoadSize += XModemPacket.Datalen.data16;
+    //烧写数据
+    
+    for(j = 0; j < 512; j++) {
+        XModemPacket.Data[j] = 0;
+    }
+   // Flash_PageRead(CurrentPacket.FileDownLoadAddress, 512, XModemPacket.Data);
+     
+  }
+  
+  //Flash_PageRead(CurrentPacket.FileDownLoadAddress, 512, XModemPacket.Data);
 
+  if(CurrentPacket.HasDownLoadSize == CurrentPacket.FileSize) 
+  {
+     XmodemAck(XMODEM_OK);
+  }else{
+     XmodemAck(XMODEM_ERROR);
+  }
+    
+ 
+}
 
 
 
@@ -57,25 +94,49 @@ void main(void)
   uchar flashID,ErrorData;
   uchar ctemp;
   uint i;
-  uchar buff[2048];
+  uchar buff[1024];
   asm sei;///关闭中断
   
   Xmodule_init();
   
 	//out_wdt_reset();
 	FlashInit();
+	flashID = 0;
 	Bootloader_Mode_Change();
 
-	
-	delay(50000);
-	
-
+	delay(50000);	
 	flashID = Flash_Read_ID();
 	
-	
 
+	
   LoadOnePicture();
   ctemp = 0;
+  
+  
+   #if 0
+ Sector_Start_Adr = (uint)(0x1000/FLASH_SECTOR_SIZE);
+ Erase_Sector(0x1000/FLASH_SECTOR_SIZE);
+ Erase_Sector(0x2000/FLASH_SECTOR_SIZE);
+ 
+ for(i = 0; i < sizeof(XModemPacket.Data); i++) {
+   XModemPacket.Data[i] = i; 
+  }
+  
+  ErrorData = Flash_Page_Write(0x1000, 512, XModemPacket.Data);
+
+	
+  for(i = 0; i < sizeof(XModemPacket.Data); i++) 
+  {
+      XModemPacket.Data[i] =0; 
+  }
+        i=3;
+     ErrorData = Flash_PageRead(0x1000, 512, XModemPacket.Data);
+#endif
+  
+  
+  
+  
+  
   
 //	ErrorData=Erase_Sector(0x100010/FLASH_SECTOR_SIZE);
 	if(ErrorData==flash_OK)//
@@ -89,24 +150,15 @@ void main(void)
 	}
   
 //  Erase_Flash();
-  Sector_Start_Adr = (uint)(0x300000/FLASH_SECTOR_SIZE);
+ 
 //	ErrorData=Erase_Flash();///每次只擦除一个扇区
 
-  for(i = 0; i < sizeof(buff); i++) {
-    buff[i] = i; 
-  }
 
   
      i =1;
-    ErrorData = Flash_Page_Write(0x100010, 256, buff);
+   // 
      i = 0;
-    for(i = 0; i < sizeof(buff); i++) 
-    {
-      buff[i] =0; 
-    }
-      i=3;
-     //  Bootloader_Mode_Change();
-    ErrorData = Flash_PageRead(0x100010, 256, buff);
+
     i=4;
   asm nop;
   

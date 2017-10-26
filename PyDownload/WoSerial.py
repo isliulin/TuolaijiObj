@@ -23,7 +23,7 @@ def onsignal_int(a, b):
 signal.signal(signal.SIGINT, onsignal_int)
 signal.signal(signal.SIGTERM, onsignal_int)
 
-ser = serial.Serial(port='COM8', baudrate=38400, parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS, timeout=0.001)
+ser = serial.Serial(port='COM6', baudrate=38400, parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS, timeout=0.001)
 print("serial.isOpen() =", ser.isOpen())
 
 
@@ -56,40 +56,45 @@ def sendPacketHead(addr, filepath):
         #  AA   |  00   00 |   00  00  | 00 00 00 00 |  00 00 00 00 | 00  |  BB |
         #
         cmd = b'\xAA'          #start
-        cmd += b'\x00\x01'     #type
+        cmd += b'\x01'     #type
         cmd += b'\x00\x08'     #lenght
         tradata = baddr + bfilepath
         cmd += tradata
-        cmd += SumCrc(cmd)
+        cmd += SumCrc(tradata)
         cmd += b'\xBB'         #end
-        print(tradata.hex())
         ser.write(cmd)
+        print("Has Send Head Meg:",cmd.hex())
+        waitAckOk()
+        print("Ok!")
     else:
         print(sys._getframe().f_lineno,"No find this file:", filepath)
 
-def sendPacketBody(databody):
+def writeSerialData(databody):
     cmd = b'\xAA\x02' + struct.pack('>H', len(databody)) + databody + SumCrc(databody) + b'\xBB'
-    print(cmd.hex())
     ser.write(cmd)
 
 	
 	
 def sendPacketBody(filepath):
+    print(filepath,"   " , os.path.getsize(filepath))
     if (os.path.exists(filepath)):
+        filesize = os.path.getsize(filepath)
         f = open(filepath, 'rb')
         CurrentIndex=0
         hasDownfilesize = 0
         while True:
-            rdata = f.read(1024)
+            rdata = f.read(512)
             hasDownfilesize += len(rdata)
-            if rdata:
-                CurrentIndex += 1
-                ser.write(rdata)
-                print(CurrentIndex , end=' ')
-                waitAckOk()
-            else:
+            if not rdata:
                 print("read compelet!" )
                 break
+            else:
+                CurrentIndex += 1
+                writeSerialData(rdata)
+                print("%04d down:%d size:%d :"  %(CurrentIndex, hasDownfilesize, filesize), rdata.hex())
+                waitAckOk()
+
+
         print(hasDownfilesize)
         f.close()
     else:
@@ -106,53 +111,20 @@ def dumpXmlFile(file_name):
         for child in childs:
             if child.nodeName == "#text":
                 continue
+            print("............start..........")
+            sendStart()
+            print("Send Start Signal:", end=' ')
+            waitAckOk()
+            print("Ok!")
+            print(child.getAttribute('Address') ,child.getAttribute('FileName'), os.path.getsize(child.getAttribute('FileName') ))
             sendPacketHead(child.getAttribute('Address') , child.getAttribute('FileName'))
             sendPacketBody(child.getAttribute('FileName'))
+            waitAckOk()
+            print("............. end.........")
 
 if __name__ == "__main__":
     dumpXmlFile("image.xml")
     exit(0)
-	
-	
-	
-	
-filename = 'LOGO.BIN'
-
-
-sendStart()  #send   '0x56'
-print("send start signal")
-waitAckOk()  #wait   '0x43'
-print("ack ok")
-sendPacketHead('0xFF0000', filename)
-print("send packet head")
-waitAckOk()  #wait   '0x43'
-print("ack ok")
-
-
-f = open(filename, 'rb')
-ffilesize = 0;
-while True:
-    rdata = f.read(1024)
-    ffilesize += len(rdata)
-    if rdata:
-        sendPacketBody(rdata)
-        waitAckOk()
-    else:
-        print("read fisnis!")
-        break
-print(ffilesize)
-f.close()
-
-
-
-
-print("mcu has ready")
-
-while True:
-    if ser.inWaiting() > 0:
-        text = ser.read(1)
-        print(" ",text)
-
 
 ser.close()
 

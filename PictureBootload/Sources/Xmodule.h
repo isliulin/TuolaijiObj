@@ -43,7 +43,7 @@ typedef struct XmodemData{
   U8 Start;   //ÆðÊ¼Î»
   U8 Type;
   UnionData Datalen;
-  U8  Data[1024];
+  U8  Data[512];
   U8  Crc;
   U8 End;
   
@@ -51,10 +51,19 @@ typedef struct XmodemData{
 }XmodemData;
 
 
-#define XMODEM_OK  0x43
-#define XMODEM_TIMEOUT 0x44
-#define XMODEM_CRCERR 0x45
-#define XMODEM_RESEND 0x46
+typedef struct _Packet{
+  U32 FileDownLoadAddress;
+  U32 FileSize;
+  U32 HasDownLoadSize;
+}TPacket;
+
+
+
+#define XMODEM_OK       0x43
+#define XMODEM_TIMEOUT  0x44
+#define XMODEM_CRCERR   0x45
+#define XMODEM_RESEND   0x46
+#define XMODEM_ERROR    0x47
 
 void Xmodule_init(void);
 void XmodemWaitStart(void);

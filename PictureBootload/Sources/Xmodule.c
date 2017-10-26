@@ -56,33 +56,37 @@ U8 CheckSum(U8* buff, U32 bufflen) {
 }
 
 
-void RecviceData(XmodemData* Packet) {
+void RecviceData(XmodemData* Pa) {
      U16 Datalen;
      U16 i;
      U8 Crc = 0;
      
-     clearPacketData(Packet);
-     Packet->Start = uart_waitchar();
-     Packet->Type  = uart_waitchar();
-     Packet->Datalen.data8[0] = uart_waitchar();	
-     Packet->Datalen.data8[1] = uart_waitchar();
+     clearPacketData(Pa);
+     Pa->Start = uart_waitchar();
+     Pa->Type  = uart_waitchar();
+     Pa->Datalen.data8[0] = uart_waitchar();	
+     Pa->Datalen.data8[1] = uart_waitchar();
      
-     Datalen = Packet->Datalen.data16;
+     Datalen = Pa->Datalen.data16;
      for(i = 0; i < Datalen; i++) 
      {
-       Packet->Data[i] = uart_waitchar();
+       Pa->Data[i] = uart_waitchar();
      }
-     Packet->Crc = uart_waitchar();	
-     Packet->End          = uart_waitchar();
+     Pa->Crc = uart_waitchar();	
+     Pa->End          = uart_waitchar();
      
- 
+      
      //crc ะฃั้
-     Crc = CheckSum(Packet->Data, Packet->Datalen.data16);
-     if( Crc == Packet->Crc) 
+     for(i = 0; i < Datalen; i++) 
+     {
+        Crc ^= Pa->Data[i];
+     }
+     
+     if( Crc == Pa->Crc) 
      {      
-        Packet->isFinish = 0x01;
+        Pa->isFinish = 0x01;
      } else {
-        Packet->isFinish = 0x00;
+        Pa->isFinish = 0x00;
      }
 }
 
@@ -92,14 +96,14 @@ U32 getFileDownloadAddress(XmodemData* Packet) {
     data.data8[0] =  Packet->Data[0];
     data.data8[1] =  Packet->Data[1];
     data.data8[2] =  Packet->Data[2];
-    data.data8[3] =  Packet->Data[4];
+    data.data8[3] =  Packet->Data[3];
     return data.data32;
 }
 
 U32 getFileDownloadSize( XmodemData* Packet) {
     UnionData32 data;
     data.data8[0] =  Packet->Data[4];
-    data.data8[1] =  Packet->Data[51];
+    data.data8[1] =  Packet->Data[5];
     data.data8[2] =  Packet->Data[6];
     data.data8[3] =  Packet->Data[7];
     return data.data32;
